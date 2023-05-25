@@ -211,7 +211,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.91}
-  m_SizeDelta: {x: 1100, y: 519}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2837315033995078211
 Canvas:
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeFull: 60
   timeBeforeDehydration: 0
-  dehydrationMultiplier: 1
+  dehydrationMultiplier: 2.5
   hydrationMultiplier: 5
   timeBeforeCryingForHelp: 30
   leaveTime: 45
@@ -446,6 +446,7 @@ MonoBehaviour:
   hasCried: 0
   barImage: {fileID: 0}
   player: {fileID: 0}
+  GrowLevel: 3
 --- !u!1 &2837315035168904791
 GameObject:
   m_ObjectHideFlags: 0
