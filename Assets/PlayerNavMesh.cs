@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerNavMesh : MonoBehaviour
 {
     [SerializeField] private List<Transform> targetPoints;
+    [SerializeField] private List<Transform> plantSpaces;
     
     
     private NavMeshAgent navMeshAgent;
@@ -23,12 +25,14 @@ public class PlayerNavMesh : MonoBehaviour
     {
         PlantWater.cryForHelp += AddDyingPlant;
         PlantWater.informGoodStatus += RemovePlant;
+        PlantWater.informDeath += RemovePlant;
     }
 
     private void OnDisable()
     {
         PlantWater.cryForHelp -= AddDyingPlant;
         PlantWater.informGoodStatus -= RemovePlant;
+        PlantWater.informDeath -= RemovePlant;
     }
 
     private void AddDyingPlant(Transform plant)
@@ -38,8 +42,10 @@ public class PlayerNavMesh : MonoBehaviour
 
     private void RemovePlant(Transform plant)
     {
+        if(!targetPoints.Contains(plant)) return;
         targetPoints.Remove(plant);
     }
+    
     void Update()
     {
         GoToDestination();

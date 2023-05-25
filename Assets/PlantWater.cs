@@ -20,9 +20,12 @@ public class PlantWater : MonoBehaviour
     [SerializeField] private Image barImage;
     [SerializeField] private GameObject player;
 
+    [SerializeField] private int GrowLevel = 1;
+
     public delegate void InformPlayer(Transform plant);
     public static InformPlayer cryForHelp;
     public static InformPlayer informGoodStatus;
+    public static InformPlayer informDeath;
 
     private void Awake()
     {
@@ -53,12 +56,23 @@ public class PlantWater : MonoBehaviour
             isBeingHydrated = true;
             timeBeforeDehydration += Time.deltaTime * hydrationMultiplier;
         }
+        else if (player.transform.position.x == transform.position.x && GrowLevel >= 3)
+        {
+            CheckIfHarvestable();
+        }
         else
         {
             isBeingHydrated = false;
         }
     }
 
+    private void Harvest()
+    {
+        StartCoroutine(KillWithDelay());
+        informDeath?.Invoke(this.GameObject().transform);
+    }
+    
+    
     private void CryForHelp()
     {
         if (timeBeforeCryingForHelp <= timeBeforeDehydration) return;
@@ -75,9 +89,24 @@ public class PlantWater : MonoBehaviour
         {
             informGoodStatus?.Invoke(this.GameObject().transform);
             hasCried = false;
+            Grow();
+            CheckIfHarvestable();
         }
     }
 
+    private void Grow()
+    {
+        GrowLevel++;
+    }
+
+    private void CheckIfHarvestable()
+    {
+        if (GrowLevel >= 3)
+        {
+            Harvest();
+        }
+    }
+    
     public void CalculateTimer()
     {
         if (isTimerRunning)
@@ -91,6 +120,7 @@ public class PlantWater : MonoBehaviour
             {
                 timeBeforeDehydration = 0f;
                 isTimerRunning = false;
+                informDeath?.Invoke(this.GameObject().transform);
                 Destroy(gameObject);
             }
         }
@@ -99,5 +129,12 @@ public class PlantWater : MonoBehaviour
     public float GetTimeNormalized()
     {
         return timeBeforeDehydration / timeFull;
+    }
+
+    IEnumerator KillWithDelay()
+    {
+        transform.parent.parent.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+        yield return new WaitForSeconds(2f);
+        Destroy(transform.parent.parent.GameObject());
     }
 }
