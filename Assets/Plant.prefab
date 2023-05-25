@@ -359,7 +359,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2837315034667216222}
-  - component: {fileID: 2837315034667216223}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -384,23 +383,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2837315034667216223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2837315034667216216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aeb59f6654465f4893dace66125a36e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeFull: 60
-  timeBeforeDehydration: 0
-  dehydrationMultiplier: 1
-  isTimerRunning: 0
-  barImage: {fileID: 0}
 --- !u!1 &2837315035010765404
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,8 +438,14 @@ MonoBehaviour:
   timeFull: 60
   timeBeforeDehydration: 0
   dehydrationMultiplier: 1
+  hydrationMultiplier: 5
+  timeBeforeCryingForHelp: 30
+  leaveTime: 45
   isTimerRunning: 0
+  isBeingHydrated: 0
+  hasCried: 0
   barImage: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &2837315035168904791
 GameObject:
   m_ObjectHideFlags: 0
