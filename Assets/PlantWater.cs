@@ -44,8 +44,7 @@ public class PlantWater : MonoBehaviour
         CalculateTimer();
         CryForHelp();
         CheckHydrationStatus();
-        barImage.fillAmount = GetTimeNormalized();
-        Debug.Log(timeBeforeDehydration);
+        barImage.fillAmount = GetPlantTimeNormalized();
     }
 
     public void CheckRefillHydration()
@@ -126,7 +125,7 @@ public class PlantWater : MonoBehaviour
         }
     }
     
-    public float GetTimeNormalized()
+    public float GetPlantTimeNormalized()
     {
         return timeBeforeDehydration / timeFull;
     }
