@@ -2,20 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ExhaustionHandler : MonoBehaviour
 {
-    private const float EXHAUSTION_MAX = 100f;
+    public float exhaustionMax = 100f;
     [SerializeField] private float exhaustionDepletionMultiplier = 1f;
-    [SerializeField] private float restMultiplier = 1f;
+    public float restMultiplier = 1f;
     
-    [SerializeField] private float exhaustionRemaining;
+    public float exhaustionRemaining;
 
     private bool isTimerRunning;
+    private IdleTarget idleTarget;
+
+    private void Awake()
+    {
+        idleTarget = GameObject.Find("IdlePoint").GetComponent<IdleTarget>();
+    }
 
     private void Start()
     {
-        exhaustionRemaining = EXHAUSTION_MAX;
+        exhaustionRemaining = exhaustionMax;
         isTimerRunning = true;
     }
 
@@ -30,6 +37,7 @@ public class ExhaustionHandler : MonoBehaviour
         {
             if (exhaustionRemaining >= 0)
             {
+                if (idleTarget.isResting) return;
                 exhaustionRemaining -= Time.deltaTime * exhaustionDepletionMultiplier;
             }
             else
@@ -42,6 +50,6 @@ public class ExhaustionHandler : MonoBehaviour
 
     public float GetExhaustionTimeNormalized()
     {
-        return exhaustionRemaining / EXHAUSTION_MAX;
+        return exhaustionRemaining / exhaustionMax;
     }
 }
