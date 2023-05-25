@@ -15,6 +15,7 @@ public class PlantWater : MonoBehaviour
     [SerializeField] private float leaveTime = 60f;
     [SerializeField] public bool isTimerRunning;
     [SerializeField] private bool isBeingHydrated;
+    private bool isSpawningApples = false;
     [SerializeField] private bool hasCried;
     
     [SerializeField] private Image barImage;
@@ -55,9 +56,11 @@ public class PlantWater : MonoBehaviour
         {
             isBeingHydrated = true;
             timeBeforeDehydration += Time.deltaTime * hydrationMultiplier;
+            CheckIfHarvestable();
         }
         else if (player.transform.position.x == transform.position.x && GrowLevel >= 4)
         {
+            Debug.Log("Sprawdzam czy sa japca");
             CheckIfHarvestable();
         }
         else
@@ -70,6 +73,7 @@ public class PlantWater : MonoBehaviour
     {
         StartCoroutine(KillWithDelay());
         informDeath?.Invoke(this.GameObject().transform);
+        isSpawningApples = false;
     }
     
     
@@ -129,7 +133,7 @@ public class PlantWater : MonoBehaviour
             else
             {
                 Harvest();
-            }             //Sprawdz czy masz japca, jezeli tak to je zbierz, je¿eli nie, to zadeklaruj rozpoczêcie nowych jab³ek;
+            }             //Sprawdz czy masz japca, jezeli tak to je zbierz, jeï¿½eli nie, to zadeklaruj rozpoczï¿½cie nowych jabï¿½ek;
         }
     }
     
@@ -147,7 +151,7 @@ public class PlantWater : MonoBehaviour
                 timeBeforeDehydration = 0f;
                 isTimerRunning = false;
                 informDeath?.Invoke(this.GameObject().transform);
-                Destroy(gameObject);
+                Destroy(transform.parent.parent.GameObject());
             }
         }
     }
@@ -159,8 +163,12 @@ public class PlantWater : MonoBehaviour
 
     IEnumerator AppleSpawnDelay()
     {
+        bool isSpawningApples = false;
+        if (isSpawningApples) yield break;
+        isSpawningApples = true;
         yield return new WaitForSeconds(10f);
         transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.SetActive(true);
+        Debug.Log("Apple test");
         informHarvesting?.Invoke(this.GameObject().transform);
     }
 
