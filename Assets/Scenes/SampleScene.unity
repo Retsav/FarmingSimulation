@@ -637,6 +637,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2837315035010765394, guid: d1bc697156e1ba247900143d283086a8,
         type: 3}
+      propertyPath: GrowLevel
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837315035010765394, guid: d1bc697156e1ba247900143d283086a8,
+        type: 3}
       propertyPath: hydrationMultiplier
       value: 5
       objectReference: {fileID: 0}
