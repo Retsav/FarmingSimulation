@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerNavMesh : MonoBehaviour
 {
     [SerializeField] private List<Transform> targetPoints;
+    
+    
     private NavMeshAgent navMeshAgent;
     private int i;
     private bool hasAdded = false;
@@ -16,31 +19,44 @@ public class PlayerNavMesh : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        GoToFirstDestination();
+        PlantWater.cryForHelp += AddDyingPlant;
+        PlantWater.informGoodStatus += RemovePlant;
     }
-    
+
+    private void OnDisable()
+    {
+        PlantWater.cryForHelp -= AddDyingPlant;
+        PlantWater.informGoodStatus -= RemovePlant;
+    }
+
+    private void AddDyingPlant(Transform plant)
+    {
+        targetPoints.Add(plant);
+    }
+
+    private void RemovePlant(Transform plant)
+    {
+        targetPoints.Remove(plant);
+    }
     void Update()
     {
-        GoToNextDestination();
+        GoToDestination();
     }
 
-    private void GoToFirstDestination()
+    private void GoToDestination()
     {
-        navMeshAgent.destination = targetPoints[i].position;
-    }
-
-    private void GoToNextDestination()
-    {
-        Debug.Log(i);
-        Debug.Log(hasAdded);
-        if (i >= targetPoints.Count || hasAdded) { return; }
-        if (navMeshAgent.transform.position.x == targetPoints[i].position.x)
+        if (targetPoints.Count() == 1)
         {
-            i++;
-            navMeshAgent.destination = targetPoints[i].position;
-            hasAdded = true;
+            navMeshAgent.destination = targetPoints[0].position;
+        }
+        else
+        {
+            for (int j = 1; j < targetPoints.Count(); j++)
+            {
+                navMeshAgent.destination = targetPoints[j].position;
+            }
         }
     }
 }
