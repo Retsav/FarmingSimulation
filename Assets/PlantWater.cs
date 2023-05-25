@@ -95,7 +95,9 @@ public class PlantWater : MonoBehaviour
 
     private void Grow()
     {
+        transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(false);
         GrowLevel++;
+        transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(true);
     }
 
     private void CheckIfHarvestable()
@@ -132,7 +134,7 @@ public class PlantWater : MonoBehaviour
 
     IEnumerator KillWithDelay()
     {
-        transform.parent.parent.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+        transform.parent.parent.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
         yield return new WaitForSeconds(2f);
         Destroy(transform.parent.parent.GameObject());
     }
