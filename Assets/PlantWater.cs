@@ -26,6 +26,7 @@ public class PlantWater : MonoBehaviour
     public static InformPlayer cryForHelp;
     public static InformPlayer informGoodStatus;
     public static InformPlayer informDeath;
+    public static InformPlayer informHarvesting;
 
     private void Awake()
     {
@@ -55,7 +56,7 @@ public class PlantWater : MonoBehaviour
             isBeingHydrated = true;
             timeBeforeDehydration += Time.deltaTime * hydrationMultiplier;
         }
-        else if (player.transform.position.x == transform.position.x && GrowLevel >= 3)
+        else if (player.transform.position.x == transform.position.x && GrowLevel >= 4)
         {
             CheckIfHarvestable();
         }
@@ -95,16 +96,40 @@ public class PlantWater : MonoBehaviour
 
     private void Grow()
     {
-        transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(false);
-        GrowLevel++;
-        transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(true);
+        if (GrowLevel >= 4)
+        {
+            CheckIfHarvestable();
+        }
+        else
+        {
+            transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(false);
+            GrowLevel++;
+            transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(true);
+            CheckGrowApples();
+        }
     }
+
+    private void CheckGrowApples()
+    {
+        if(GrowLevel >= 4)
+        {
+            StartCoroutine(AppleSpawnDelay());
+        }
+    }
+
 
     private void CheckIfHarvestable()
     {
-        if (GrowLevel >= 3)
+        if (GrowLevel >= 4)
         {
-            Harvest();
+            if (!transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.active)
+            {
+                CheckGrowApples();
+            }
+            else
+            {
+                Harvest();
+            }             //Sprawdz czy masz japca, jezeli tak to je zbierz, je¿eli nie, to zadeklaruj rozpoczêcie nowych jab³ek;
         }
     }
     
@@ -132,10 +157,16 @@ public class PlantWater : MonoBehaviour
         return timeBeforeDehydration / timeFull;
     }
 
+    IEnumerator AppleSpawnDelay()
+    {
+        yield return new WaitForSeconds(10f);
+        transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.SetActive(true);
+        informHarvesting?.Invoke(this.GameObject().transform);
+    }
+
     IEnumerator KillWithDelay()
     {
-        transform.parent.parent.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
         yield return new WaitForSeconds(2f);
-        Destroy(transform.parent.parent.GameObject());
+        transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.SetActive(false);
     }
 }

@@ -27,6 +27,7 @@ public class PlayerNavMesh : MonoBehaviour
         PlantWater.cryForHelp += AddDyingPlant;
         PlantWater.informGoodStatus += RemovePlant;
         PlantWater.informDeath += RemovePlant;
+        PlantWater.informHarvesting += AddHarvestablePlant;
     }
 
     private void OnDisable()
@@ -34,12 +35,19 @@ public class PlayerNavMesh : MonoBehaviour
         PlantWater.cryForHelp -= AddDyingPlant;
         PlantWater.informGoodStatus -= RemovePlant;
         PlantWater.informDeath -= RemovePlant;
+        PlantWater.informHarvesting -= AddHarvestablePlant;
     }
 
     private void AddDyingPlant(Transform plant)
     {
         targetPoints.Add(plant);
     }
+
+    private void AddHarvestablePlant(Transform plant)
+    {
+        targetPoints.Add(plant);
+    }
+
 
     private void RemovePlant(Transform plant)
     {
