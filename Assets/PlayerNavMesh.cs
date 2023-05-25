@@ -8,6 +8,7 @@ using UnityEngine.AI;
 
 public class PlayerNavMesh : MonoBehaviour
 {
+
     [SerializeField] private List<Transform> targetPoints;
     [SerializeField] private List<Transform> plantSpaces;
     
