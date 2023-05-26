@@ -125,6 +125,7 @@ public class PlantWater : MonoBehaviour
             hasApples = false;
             transform.parent.GetChild(1).gameObject.SetActive(false);
             isHarvestInformed = false;
+            Degrow();
             informGoodStatus?.Invoke(this.GameObject().transform);
             timeBeforeHarvest = 0f;
         } else
@@ -149,6 +150,13 @@ public class PlantWater : MonoBehaviour
         transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.SetActive(true);
         hasApples = true;
     }
+    private void Degrow()
+    {
+        transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(false);
+        GrowLevel--;
+        transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(true);
+    }
+
 
     private void Grow()
     {
