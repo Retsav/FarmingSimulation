@@ -41,7 +41,7 @@ public class ChickenBehaviour : MonoBehaviour
         }
         else
         {
-            animator.SetBool("IsWalking", false);
+            animator.SetBool("isWalking", false);
         }
     }
 
