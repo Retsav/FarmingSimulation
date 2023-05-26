@@ -15,10 +15,16 @@ public class PlantWater : MonoBehaviour
     [SerializeField] private float leaveTime = 60f;
     [SerializeField] public bool isTimerRunning;
     [SerializeField] private bool isBeingHydrated;
+    [SerializeField] private bool isHarvestInformed;
     private bool isSpawningApples = false;
     [SerializeField] private bool hasCried;
+    [SerializeField] private bool hasApples;
+    [SerializeField] private float timeBeforeHarvest;
+    private const float timeHarvesting = 4f;
     
-    [SerializeField] private Image barImage;
+    [SerializeField] private Image hydrationBar;
+    [SerializeField] private Image harvestBar;
+
     [SerializeField] private GameObject player;
 
     [SerializeField] private int GrowLevel = 1;
@@ -31,7 +37,8 @@ public class PlantWater : MonoBehaviour
 
     private void Awake()
     {
-        barImage = transform.Find("Bar").GetComponent<Image>();
+        hydrationBar = transform.GetChild(2).GetComponent<Image>();
+        harvestBar = transform.parent.GetChild(1).GetChild(2).GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
     public void Start()
@@ -45,40 +52,36 @@ public class PlantWater : MonoBehaviour
         CheckRefillHydration();
         CalculateTimer();
         CryForHelp();
-        CheckHydrationStatus();
-        barImage.fillAmount = GetPlantTimeNormalized();
+        CheckPlantStatus();
+        CheckApples();
+        hydrationBar.fillAmount = GetPlantTimeNormalized();
     }
 
     public void CheckRefillHydration()
     {
         if (timeBeforeDehydration == timeFull) return;
-        if (player.transform.position.x == transform.position.x)
+        if (player.transform.position.x == transform.position.x && !hasApples)
         {
-            isBeingHydrated = true;
-            timeBeforeDehydration += Time.deltaTime * hydrationMultiplier;
-            CheckIfHarvestable();
+            Hydrate();
         }
-        else if (player.transform.position.x == transform.position.x && GrowLevel >= 4)
+        else if (player.transform.position.x == transform.position.x && hasApples)
         {
-            Debug.Log("Sprawdzam czy sa japca");
-            CheckIfHarvestable();
-        }
-        else
+            Harvest();  
+        } else 
         {
             isBeingHydrated = false;
         }
     }
 
-    private void Harvest()
+    private void Hydrate()
     {
-        StartCoroutine(KillWithDelay());
-        informDeath?.Invoke(this.GameObject().transform);
-        isSpawningApples = false;
+        isBeingHydrated = true;
+        timeBeforeDehydration += Time.deltaTime * hydrationMultiplier;
     }
-    
-    
+
     private void CryForHelp()
     {
+        if (hasApples) return;
         if (timeBeforeCryingForHelp <= timeBeforeDehydration) return;
         if (!hasCried)
         { 
@@ -87,55 +90,75 @@ public class PlantWater : MonoBehaviour
         }
     }
 
-    private void CheckHydrationStatus()
+    private void CheckApples()
+    {
+        if(hasApples && !isHarvestInformed)
+        {
+            isHarvestInformed = true;
+            informHarvesting?.Invoke(this.GameObject().transform);
+        }
+    }
+
+    private void CheckPlantStatus()
     {
         if (hasCried && (timeBeforeDehydration >= leaveTime))
         {
             informGoodStatus?.Invoke(this.GameObject().transform);
             hasCried = false;
-            Grow();
-            CheckIfHarvestable();
+            if(GrowLevel < 4)
+            {
+                Grow();
+            } else
+            {
+                if (hasApples) return;
+                StartCoroutine(GrowApples());
+            }
         }
+    }
+
+    private void Harvest()
+    {
+        transform.parent.GetChild(1).gameObject.SetActive(true);
+        if(timeBeforeHarvest >= timeHarvesting)
+        {
+            transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.SetActive(false);
+            hasApples = false;
+            transform.parent.GetChild(1).gameObject.SetActive(false);
+            isHarvestInformed = false;
+            informGoodStatus?.Invoke(this.GameObject().transform);
+            timeBeforeHarvest = 0f;
+        } else
+        {
+            if(player.transform.position.x == transform.position.x)
+            {
+                timeBeforeHarvest += Time.deltaTime;
+            }
+            harvestBar.fillAmount = GetHarvestNormalized();
+        }
+    }
+
+    private float GetHarvestNormalized()
+    {
+        return timeBeforeHarvest / timeHarvesting;
+    }
+
+
+    IEnumerator GrowApples()
+    {
+        yield return new WaitForSeconds(5f);
+        transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.SetActive(true);
+        hasApples = true;
     }
 
     private void Grow()
     {
-        if (GrowLevel >= 4)
-        {
-            CheckIfHarvestable();
-        }
-        else
-        {
-            transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(false);
-            GrowLevel++;
-            transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(true);
-            CheckGrowApples();
-        }
-    }
-
-    private void CheckGrowApples()
-    {
-        if(GrowLevel >= 4)
-        {
-            StartCoroutine(AppleSpawnDelay());
-        }
+           transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(false);
+           GrowLevel++;
+           transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(true);
     }
 
 
-    private void CheckIfHarvestable()
-    {
-        if (GrowLevel >= 4)
-        {
-            if (!transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.active)
-            {
-                CheckGrowApples();
-            }
-            else
-            {
-                Harvest();
-            }             //Sprawdz czy masz japca, jezeli tak to je zbierz, je�eli nie, to zadeklaruj rozpocz�cie nowych jab�ek;
-        }
-    }
+
     
     public void CalculateTimer()
     {
@@ -159,17 +182,6 @@ public class PlantWater : MonoBehaviour
     public float GetPlantTimeNormalized()
     {
         return timeBeforeDehydration / timeFull;
-    }
-
-    IEnumerator AppleSpawnDelay()
-    {
-        bool isSpawningApples = false;
-        if (isSpawningApples) yield break;
-        isSpawningApples = true;
-        yield return new WaitForSeconds(10f);
-        transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.SetActive(true);
-        Debug.Log("Apple test");
-        informHarvesting?.Invoke(this.GameObject().transform);
     }
 
     IEnumerator KillWithDelay()
