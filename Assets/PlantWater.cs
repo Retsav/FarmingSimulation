@@ -21,9 +21,15 @@ public class PlantWater : MonoBehaviour
     [SerializeField] private bool hasApples;
     [SerializeField] private float timeBeforeHarvest;
     private const float timeHarvesting = 4f;
-    
+    [SerializeField] private bool hasToxicCried = false;
+
     [SerializeField] private Image hydrationBar;
     [SerializeField] private Image harvestBar;
+    [SerializeField] private Image toxicBar;
+
+    [SerializeField] private float timeBeforeFullToxic;
+    [SerializeField] private float toxicFullMeter = 15f;
+    [SerializeField] private bool isToxic;
 
     [SerializeField] private GameObject player;
 
@@ -39,6 +45,7 @@ public class PlantWater : MonoBehaviour
     {
         hydrationBar = transform.GetChild(2).GetComponent<Image>();
         harvestBar = transform.parent.GetChild(1).GetChild(2).GetComponent<Image>();
+        toxicBar = transform.parent.GetChild(2).GetChild(2).GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
     public void Start()
@@ -54,6 +61,7 @@ public class PlantWater : MonoBehaviour
         CryForHelp();
         CheckPlantStatus();
         CheckApples();
+        Intoxicate();
         hydrationBar.fillAmount = GetPlantTimeNormalized();
     }
 
@@ -71,6 +79,36 @@ public class PlantWater : MonoBehaviour
         {
             isBeingHydrated = false;
         }
+    }
+
+    private void Intoxicate()
+    {
+        if (!isToxic) return;
+        if (hasToxicCried == false)
+        {
+            cryForHelp?.Invoke(this.GameObject().transform);
+            hasToxicCried = true;
+        }
+        transform.parent.GetChild(2).gameObject.SetActive(true);
+        if(timeBeforeFullToxic >= toxicFullMeter)
+        {
+            informDeath?.Invoke(this.GameObject().transform);
+            Destroy(transform.parent.parent.GameObject());
+        } else if (player.transform.position.x == transform.position.x)
+        {
+            timeBeforeFullToxic -= Time.deltaTime;
+            if(timeBeforeFullToxic <= 0)
+            {
+                isToxic = false;
+                hasToxicCried = false;
+                informGoodStatus?.Invoke(this.GameObject().transform);
+                transform.parent.GetChild(2).gameObject.SetActive(false);
+            }
+        } else
+        {
+            timeBeforeFullToxic += Time.deltaTime;
+        }
+        toxicBar.fillAmount = GetToxicNormalized();
     }
 
     private void Hydrate()
@@ -141,6 +179,11 @@ public class PlantWater : MonoBehaviour
     private float GetHarvestNormalized()
     {
         return timeBeforeHarvest / timeHarvesting;
+    }
+
+    private float GetToxicNormalized()
+    {
+        return timeBeforeFullToxic / toxicFullMeter;
     }
 
 
