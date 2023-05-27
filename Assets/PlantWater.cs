@@ -30,6 +30,7 @@ public class PlantWater : MonoBehaviour
     [SerializeField] private float timeBeforeFullToxic;
     [SerializeField] private float toxicFullMeter = 15f;
     [SerializeField] private bool isToxic;
+    [SerializeField] private float toxicRollInterval = 10f;
 
     [SerializeField] private GameObject player;
 
@@ -51,6 +52,7 @@ public class PlantWater : MonoBehaviour
     public void Start()
     {
         isTimerRunning = true;
+        StartCoroutine(ToxicRoll());
         timeBeforeDehydration = timeFull;
     }
 
@@ -68,11 +70,11 @@ public class PlantWater : MonoBehaviour
     public void CheckRefillHydration()
     {
         if (timeBeforeDehydration == timeFull) return;
-        if (player.transform.position.x == transform.position.x && !hasApples)
+        if (player.transform.position.x == transform.position.x && !hasApples && !isToxic)
         {
             Hydrate();
         }
-        else if (player.transform.position.x == transform.position.x && hasApples)
+        else if (player.transform.position.x == transform.position.x && hasApples && !isToxic)
         {
             Harvest();  
         } else 
@@ -101,6 +103,7 @@ public class PlantWater : MonoBehaviour
             {
                 isToxic = false;
                 hasToxicCried = false;
+                timeBeforeFullToxic = 0f;
                 informGoodStatus?.Invoke(this.GameObject().transform);
                 transform.parent.GetChild(2).gameObject.SetActive(false);
             }
@@ -109,6 +112,21 @@ public class PlantWater : MonoBehaviour
             timeBeforeFullToxic += Time.deltaTime;
         }
         toxicBar.fillAmount = GetToxicNormalized();
+    }
+
+    IEnumerator ToxicRoll()
+    {
+        while(true)
+        {
+            if (isToxic) yield break;
+            Debug.Log("Rolled toxicity for: " + this.transform.parent.parent.GameObject().name);
+            yield return new WaitForSeconds(toxicRollInterval);
+            var roll = UnityEngine.Random.Range(0f, 11f);
+            if(roll >= 10f)
+            {
+                isToxic = true;
+            }
+        }
     }
 
     private void Hydrate()
@@ -121,7 +139,7 @@ public class PlantWater : MonoBehaviour
     {
         if (hasApples) return;
         if (timeBeforeCryingForHelp <= timeBeforeDehydration) return;
-        if (!hasCried)
+        if (!hasCried && !hasToxicCried)
         { 
             cryForHelp?.Invoke(this.GameObject().transform);
             hasCried = true;
