@@ -610,20 +610,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aeb59f6654465f4893dace66125a36e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeFull: 60
+  timeFull: 120
   timeBeforeDehydration: 0
-  dehydrationMultiplier: 2.5
-  hydrationMultiplier: 5
+  dehydrationMultiplier: 1
+  hydrationMultiplier: 15
   timeBeforeCryingForHelp: 30
-  leaveTime: 45
+  leaveTime: 80
   isTimerRunning: 0
   isBeingHydrated: 0
   isHarvestInformed: 0
   hasCried: 0
   hasApples: 0
-  timeBeforeHarvest: 3
+  timeBeforeHarvest: 0.1
+  hasToxicCried: 0
   hydrationBar: {fileID: 0}
   harvestBar: {fileID: 0}
+  toxicBar: {fileID: 0}
+  timeBeforeFullToxic: 0
+  toxicFullMeter: 15
+  isToxic: 0
+  toxicRollInterval: 10
   player: {fileID: 0}
   GrowLevel: 1
 --- !u!1 &2837315035168904791
