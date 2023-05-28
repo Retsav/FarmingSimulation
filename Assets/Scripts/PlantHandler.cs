@@ -12,6 +12,8 @@ public class PlantHandler : MonoBehaviour
     [SerializeField] private Image actionfillBar;
     [SerializeField] private GameObject actionBar;
 
+    [SerializeField] private GameObject plantPrefab;
+
     [SerializeField] private float timeBeforeSeeded;
     [SerializeField] private float maxTimeSeed = 5f;
     
@@ -29,7 +31,7 @@ public class PlantHandler : MonoBehaviour
         CheckIfEmpty();
         foreach (var plant in plantSpaces)
         {
-            if (!plant.GetChild(0).GameObject().activeSelf)
+            if (plant.childCount == 0)
             {
                 if (player.transform.position.x == plant.transform.position.x)
                 {
@@ -39,7 +41,7 @@ public class PlantHandler : MonoBehaviour
                         timeBeforeSeeded += Time.deltaTime;
                     } else  {
                         informDoneSeeding?.Invoke(plant.GameObject().transform);
-                        plant.GetChild(0).GameObject().SetActive(true);
+                        Instantiate(plantPrefab, plant.position, Quaternion.identity, plant.transform); 
                         timeBeforeSeeded = 0f;
                         actionBar.SetActive(false);
                     }
@@ -62,7 +64,7 @@ public class PlantHandler : MonoBehaviour
     {
         foreach (var plant in plantSpaces)
         {
-            if (plant.GetChild(0).GameObject().activeSelf) return;
+            if (plant.childCount > 0) return;
             Debug.Log("Wykryto seedplace bez rosliny");
             informSeed?.Invoke(plant.GameObject().transform);
         }
