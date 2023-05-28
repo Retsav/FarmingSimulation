@@ -118,11 +118,11 @@ public class PlantWater : MonoBehaviour
     {
         while(true)
         {
-            if (isToxic) yield break;
-            Debug.Log("Rolled toxicity for: " + this.transform.parent.parent.GameObject().name);
+            yield return new WaitUntil(() => !isToxic);
             yield return new WaitForSeconds(toxicRollInterval);
-            var roll = UnityEngine.Random.Range(0f, 11f);
-            if(roll >= 10f)
+            var roll = MathF.Floor(UnityEngine.Random.Range(0f, 101f));
+            Debug.Log("Rolled toxicity for: " + this.transform.parent.parent.GameObject().name + ". Roll was: " + roll);
+            if(roll >= 95f)
             {
                 isToxic = true;
             }
@@ -132,7 +132,10 @@ public class PlantWater : MonoBehaviour
     private void Hydrate()
     {
         isBeingHydrated = true;
-        timeBeforeDehydration += Time.deltaTime * hydrationMultiplier;
+        if(timeBeforeDehydration <= timeFull)
+        {
+            timeBeforeDehydration += Time.deltaTime * hydrationMultiplier;   
+        }
     }
 
     private void CryForHelp()
