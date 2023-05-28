@@ -629,7 +629,7 @@ MonoBehaviour:
   timeBeforeFullToxic: 0
   toxicFullMeter: 15
   isToxic: 0
-  toxicRollInterval: 10
+  toxicRollInterval: 25
   player: {fileID: 0}
   GrowLevel: 1
 --- !u!1 &2837315035168904791
