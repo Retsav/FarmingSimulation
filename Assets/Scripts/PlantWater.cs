@@ -49,11 +49,16 @@ public class PlantWater : MonoBehaviour
         toxicBar = transform.parent.GetChild(2).GetChild(2).GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
+
+    private void OnEnable()
+    {
+        timeBeforeDehydration = timeFull;
+        isTimerRunning = true;
+    }
+
     public void Start()
     {
-        isTimerRunning = true;
         StartCoroutine(ToxicRoll());
-        timeBeforeDehydration = timeFull;
     }
 
     private void Update()
@@ -95,7 +100,7 @@ public class PlantWater : MonoBehaviour
         if(timeBeforeFullToxic >= toxicFullMeter)
         {
             informDeath?.Invoke(this.GameObject().transform);
-            Destroy(transform.parent.parent.GameObject());
+            transform.parent.parent.GameObject().SetActive(false);
         } else if (player.transform.position.x == transform.position.x)
         {
             timeBeforeFullToxic -= Time.deltaTime;
@@ -246,7 +251,7 @@ public class PlantWater : MonoBehaviour
                 timeBeforeDehydration = 0f;
                 isTimerRunning = false;
                 informDeath?.Invoke(this.GameObject().transform);
-                Destroy(transform.parent.parent.GameObject());
+                transform.parent.parent.GameObject().SetActive(false);
             }
         }
     }
