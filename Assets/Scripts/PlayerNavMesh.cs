@@ -48,6 +48,7 @@ public class PlayerNavMesh : MonoBehaviour
     private void AddSeedablePlant(Transform seedPlace)
     {
         if (targetPoints.Contains(seedPlace)) return;
+        if (seedPlace.childCount > 0) return;
         targetPoints.Add(seedPlace);
     }
 
