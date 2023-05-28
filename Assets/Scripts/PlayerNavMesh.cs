@@ -10,9 +10,7 @@ public class PlayerNavMesh : MonoBehaviour
 {
 
     [SerializeField] private List<Transform> targetPoints;
-    [SerializeField] private List<Transform> plantSpaces;
-    
-    
+
     private NavMeshAgent navMeshAgent;
     private int i;
     private bool hasAdded = false;
@@ -26,16 +24,20 @@ public class PlayerNavMesh : MonoBehaviour
     {
         PlantWater.cryForHelp += AddDyingPlant;
         PlantWater.informGoodStatus += RemovePlant;
-        PlantWater.informDeath += RemovePlant;
+        PlantWater.informDeath += RemoveDeadPlant;
         PlantWater.informHarvesting += AddHarvestablePlant;
+        PlantHandler.informSeed += AddSeedablePlant;
+        PlantHandler.informDoneSeeding += RemoveSeedablePlant;
     }
 
     private void OnDisable()
     {
         PlantWater.cryForHelp -= AddDyingPlant;
         PlantWater.informGoodStatus -= RemovePlant;
-        PlantWater.informDeath -= RemovePlant;
+        PlantWater.informDeath -= RemoveDeadPlant;
         PlantWater.informHarvesting -= AddHarvestablePlant;
+        PlantHandler.informSeed -= AddSeedablePlant;
+        PlantHandler.informDoneSeeding -= RemoveSeedablePlant;
     }
 
     private void AddDyingPlant(Transform plant)
@@ -43,6 +45,17 @@ public class PlayerNavMesh : MonoBehaviour
         targetPoints.Add(plant);
     }
 
+    private void AddSeedablePlant(Transform seedPlace)
+    {
+        if (targetPoints.Contains(seedPlace)) return;
+        targetPoints.Add(seedPlace);
+    }
+
+    private void RemoveSeedablePlant(Transform seedPlace)
+    {
+        targetPoints.Remove(seedPlace);
+    }
+    
     private void AddHarvestablePlant(Transform plant)
     {
         targetPoints.Add(plant);
@@ -54,7 +67,14 @@ public class PlayerNavMesh : MonoBehaviour
         if(!targetPoints.Contains(plant)) return;
         targetPoints.Remove(plant);
     }
-    
+
+    private void RemoveDeadPlant(Transform plant)
+    {
+        if(!targetPoints.Contains(plant)) return;
+        targetPoints.Remove(plant);
+        targetPoints.Add(plant.parent.parent.parent);
+    }
+
     void Update()
     {
         GoToDestination();
