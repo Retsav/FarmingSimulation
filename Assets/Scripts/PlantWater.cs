@@ -52,15 +52,6 @@ public class PlantWater : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void CheckStatuses()
-    {
-        if (hasCried && (toxicFullMeter >= timeBeforeFullToxic))
-        {
-            Debug.Log("Pomidor");
-            informCleanRemoval?.Invoke(this.GameObject().transform);
-        }
-    }
-
     private void OnEnable()
     {
         timeBeforeDehydration = timeFull;
@@ -79,6 +70,7 @@ public class PlantWater : MonoBehaviour
         CryForHelp();
         CheckPlantStatus();
         CheckApples();
+        CleanUpMissingTransform();
         Intoxicate();
         hydrationBar.fillAmount = GetPlantTimeNormalized();
         //CheckStatuses();
@@ -97,6 +89,17 @@ public class PlantWater : MonoBehaviour
         } else 
         {
             isBeingHydrated = false;
+        }
+    }
+
+    private void CleanUpMissingTransform()
+    {
+        if (hasApples && isHarvestInformed)
+        {
+            if (hasCried && (timeBeforeDehydration >= timeFull) || isToxic && (timeBeforeFullToxic >= toxicFullMeter))
+            {
+                informCleanRemoval?.Invoke(this.GameObject().transform);
+            }
         }
     }
 
@@ -146,7 +149,6 @@ public class PlantWater : MonoBehaviour
             yield return new WaitUntil(() => !isToxic);
             yield return new WaitForSeconds(toxicRollInterval);
             var roll = MathF.Floor(UnityEngine.Random.Range(0f, 101f));
-            Debug.Log("Rolled toxicity for: " + this.transform.parent.parent.GameObject().name + ". Roll was: " + roll);
             if(roll >= 95f)
             {
                 isToxic = true;
@@ -180,6 +182,7 @@ public class PlantWater : MonoBehaviour
         {
             isHarvestInformed = true;
             informHarvesting?.Invoke(this.GameObject().transform);
+            
         }
     }
 
@@ -203,6 +206,7 @@ public class PlantWater : MonoBehaviour
     private void Harvest()
     {
         transform.parent.GetChild(1).gameObject.SetActive(true);
+
         if(timeBeforeHarvest >= timeHarvesting)
         {
             
@@ -219,10 +223,6 @@ public class PlantWater : MonoBehaviour
             if(player.transform.position.x == transform.position.x)
             {
                 timeBeforeHarvest += Time.deltaTime;
-                if (hasCried && (timeBeforeDehydration >= timeFull) || isToxic && (timeBeforeFullToxic >= toxicFullMeter))
-                {
-                    informCleanRemoval?.Invoke(this.GameObject().transform);
-                }
             }
             harvestBar.fillAmount = GetHarvestNormalized();
         }
