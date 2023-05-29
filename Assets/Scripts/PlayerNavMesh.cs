@@ -30,6 +30,7 @@ public class PlayerNavMesh : MonoBehaviour
         PlantHandler.informSeed += AddSeedablePlant;
         PlantHandler.informDoneSeeding += RemoveSeedablePlant;
         PlantWater.informRemoveSeed += RemoveSeedable;
+        PlantWater.informCleanRemoval += RemovePlant;
     }
 
     private void OnDisable()
@@ -41,6 +42,7 @@ public class PlayerNavMesh : MonoBehaviour
         PlantHandler.informSeed -= AddSeedablePlant;
         PlantHandler.informDoneSeeding -= RemoveSeedablePlant;
         PlantWater.informRemoveSeed -= RemoveSeedable;
+        PlantWater.informCleanRemoval -= RemovePlant;
     }
 
     private void AddDyingPlant(Transform plant)
@@ -67,7 +69,6 @@ public class PlayerNavMesh : MonoBehaviour
         targetPoints.Add(plant);
     }
 
-
     private void RemovePlant(Transform plant)
     {
         if(!targetPoints.Contains(plant)) return;
@@ -90,6 +91,7 @@ public class PlayerNavMesh : MonoBehaviour
     void Update()
     {
         GoToDestination();
+        targetPoints.RemoveAll( x => !x);
     }
 
     private void GoToDestination()
