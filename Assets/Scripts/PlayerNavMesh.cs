@@ -54,8 +54,6 @@ public class PlayerNavMesh : MonoBehaviour
     {
         if (targetPoints.Contains(seedPlace)) return;
         if (isDetoxicating) return;
-        if (seedPlace.childCount > 0) return;
-        Debug.Log("Przeszedlem test");
         targetPoints.Add(seedPlace);
     }
 
@@ -79,7 +77,7 @@ public class PlayerNavMesh : MonoBehaviour
     {
         if(!targetPoints.Contains(plant)) return;
         targetPoints.Remove(plant);
-        targetPoints.Add(plant.parent.parent.parent);
+        targetPoints.Add(plant);
     }
 
     private void RemoveSeedable(Transform plant)
@@ -91,7 +89,6 @@ public class PlayerNavMesh : MonoBehaviour
     void Update()
     {
         GoToDestination();
-        targetPoints.RemoveAll( x => !x);
     }
 
     private void GoToDestination()
@@ -99,11 +96,13 @@ public class PlayerNavMesh : MonoBehaviour
         if (targetPoints.Count() == 1)
         {
             navMeshAgent.destination = targetPoints[0].position;
+            Debug.Log("Siedze na dupie");
         }
         else
         {
             for (int j = 1; j < targetPoints.Count(); j++)
             {
+                if(targetPoints[j].CompareTag("tree")) { Debug.Log("Wykryto drzewo"); }
                 navMeshAgent.destination = targetPoints[j].position;
             }
         }
