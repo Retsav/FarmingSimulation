@@ -13,6 +13,7 @@ public class PlantHandler : MonoBehaviour
     [SerializeField] private GameObject actionBar;
 
     [SerializeField] private GameObject plantPrefab;
+    [SerializeField] private GameObject treeplantPrefab;
 
     [SerializeField] private float timeBeforeSeeded;
     [SerializeField] private float maxTimeSeed = 5f;
@@ -41,7 +42,14 @@ public class PlantHandler : MonoBehaviour
                         timeBeforeSeeded += Time.deltaTime;
                     } else  {
                         informDoneSeeding?.Invoke(plant.GameObject().transform);
-                        Instantiate(plantPrefab, plant.position, Quaternion.identity, plant.transform); 
+                        if (plant.CompareTag("tree"))
+                        {
+                            Instantiate(treeplantPrefab, plant.position, Quaternion.identity, plant.transform);
+                        }
+                        else
+                        {
+                            Instantiate(plantPrefab, plant.position, Quaternion.identity, plant.transform);
+                        }
                         timeBeforeSeeded = 0f;
                         actionBar.SetActive(false);
                     }
