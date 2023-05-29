@@ -612,7 +612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeFull: 120
   timeBeforeDehydration: 0
-  dehydrationMultiplier: 1
+  dehydrationMultiplier: 0.2
   hydrationMultiplier: 15
   timeBeforeCryingForHelp: 30
   leaveTime: 80
