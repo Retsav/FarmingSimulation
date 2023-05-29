@@ -49,11 +49,6 @@ public class ExhaustionHandler : MonoBehaviour
                     criticalCondition?.Invoke();
                 }
             }
-            else
-            {
-                exhaustionRemaining = 0f;
-                isTimerRunning = false;
-            }
         }
     }
 
