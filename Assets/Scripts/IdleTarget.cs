@@ -9,6 +9,12 @@ public class IdleTarget : MonoBehaviour
     private ExhaustionHandler exhaustionHandler;
     public bool isResting;
 
+    private bool hasSitInformed;
+    
+    public delegate void InformSitAnimation();
+    public static InformSitAnimation informSit;
+
+    
     private void Awake()
     {
         player = GameObject.FindWithTag("Player");
@@ -24,6 +30,12 @@ public class IdleTarget : MonoBehaviour
     {
         if (player.transform.position.x == transform.position.x)
         {
+            if (!hasSitInformed)
+            {
+                Debug.Log("Invoking Sitting");
+                informSit?.Invoke();
+                hasSitInformed = true;
+            }
             isResting = true;
             if (exhaustionHandler.exhaustionRemaining >= exhaustionHandler.exhaustionMax) return;
             exhaustionHandler.exhaustionRemaining += Time.deltaTime * exhaustionHandler.restMultiplier;
@@ -31,6 +43,7 @@ public class IdleTarget : MonoBehaviour
         else
         {
             isResting = false;
+            hasSitInformed = false;
         }
     }
 }
