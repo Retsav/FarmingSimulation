@@ -205,7 +205,7 @@ public class PlantWater : MonoBehaviour
         transform.parent.GetChild(1).gameObject.SetActive(true);
         if(timeBeforeHarvest >= timeHarvesting)
         {
-            if(toxicFullMeter >= timeBeforeFullToxic) { informDeath?.Invoke(this.GameObject().transform); }
+            
             transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.SetActive(false);
             hasApples = false;
             transform.parent.GetChild(1).gameObject.SetActive(false);
@@ -218,11 +218,15 @@ public class PlantWater : MonoBehaviour
         {
             if(player.transform.position.x == transform.position.x)
             {
-                if(toxicFullMeter >= timeBeforeFullToxic) { informDeath?.Invoke(this.GameObject().transform); }
                 timeBeforeHarvest += Time.deltaTime;
+                if (hasCried && (timeBeforeDehydration >= timeFull) || isToxic && (timeBeforeFullToxic >= toxicFullMeter))
+                {
+                    informCleanRemoval?.Invoke(this.GameObject().transform);
+                }
             }
             harvestBar.fillAmount = GetHarvestNormalized();
         }
+        
     }
 
     private float GetHarvestNormalized()
