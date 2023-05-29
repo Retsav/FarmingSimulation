@@ -82,7 +82,6 @@ public class PlantHandler : MonoBehaviour
         foreach (var plant in plantSpaces)
         {
             if (plant.childCount > 0) return;
-            Debug.Log("Wykryto seedplace bez rosliny");
             informSeed?.Invoke(plant.GameObject().transform);
         }
     }
