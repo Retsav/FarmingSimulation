@@ -98,7 +98,7 @@ public class PlantWater : MonoBehaviour
         {
             if (hasCried && (timeBeforeDehydration >= timeFull) || isToxic && (timeBeforeFullToxic >= toxicFullMeter))
             {
-                informCleanRemoval?.Invoke(this.GameObject().transform);
+                informCleanRemoval?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             }
         }
     }
@@ -109,7 +109,7 @@ public class PlantWater : MonoBehaviour
         if (!isToxic) return;
         if (hasToxicCried == false)
         {
-            cryForHelp?.Invoke(this.GameObject().transform);
+            cryForHelp?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             hasToxicCried = true;
         }
         transform.parent.GetChild(2).gameObject.SetActive(true);
@@ -117,9 +117,9 @@ public class PlantWater : MonoBehaviour
         {
             if (hasCried)
             {
-                informCleanRemoval?.Invoke(this.GameObject().transform);
+                informCleanRemoval?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             }
-            informDeath?.Invoke(this.GameObject().transform);
+            informDeath?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             Destroy(transform.parent.parent.GameObject());
         } else if (player.transform.position.x == transform.position.x)
         {
@@ -131,7 +131,7 @@ public class PlantWater : MonoBehaviour
                 hasToxicCried = false;
                 timeBeforeFullToxic = 0f;
                 navMesh.isDetoxicating = false;
-                informGoodStatus?.Invoke(this.GameObject().transform);
+                informGoodStatus?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
                 transform.parent.GetChild(2).gameObject.SetActive(false);
             }
         } else
@@ -171,7 +171,7 @@ public class PlantWater : MonoBehaviour
         if (timeBeforeCryingForHelp <= timeBeforeDehydration) return;
         if (!hasCried && !hasToxicCried)
         { 
-            cryForHelp?.Invoke(this.GameObject().transform);
+            cryForHelp?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             hasCried = true;
         }
     }
@@ -181,7 +181,7 @@ public class PlantWater : MonoBehaviour
         if(hasApples && !isHarvestInformed)
         {
             isHarvestInformed = true;
-            informHarvesting?.Invoke(this.GameObject().transform);
+            informHarvesting?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             
         }
     }
@@ -190,7 +190,7 @@ public class PlantWater : MonoBehaviour
     {
         if (hasCried && (timeBeforeDehydration >= leaveTime))
         {
-            informGoodStatus?.Invoke(this.GameObject().transform);
+            informGoodStatus?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             hasCried = false;
             if(GrowLevel < 4)
             {
@@ -215,7 +215,7 @@ public class PlantWater : MonoBehaviour
             transform.parent.GetChild(1).gameObject.SetActive(false);
             isHarvestInformed = false;
             Degrow();
-            informGoodStatus?.Invoke(this.GameObject().transform);
+            informGoodStatus?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             informRemoveSeed?.Invoke(transform.parent.parent.parent.GameObject().transform);
             timeBeforeHarvest = 0f;
         } else
@@ -279,9 +279,9 @@ public class PlantWater : MonoBehaviour
                 isTimerRunning = false;
                 if (hasToxicCried)
                 {
-                    informCleanRemoval?.Invoke(this.GameObject().transform);
+                    informCleanRemoval?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
                 }
-                informDeath?.Invoke(this.GameObject().transform);
+                informDeath?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
                 Destroy(transform.parent.parent.GameObject());
             }
         }
