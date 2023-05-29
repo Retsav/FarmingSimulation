@@ -41,6 +41,7 @@ public class PlantWater : MonoBehaviour
     public static InformPlayer informGoodStatus;
     public static InformPlayer informDeath;
     public static InformPlayer informHarvesting;
+    public static InformPlayer informRemoveSeed;
 
     private void Awake()
     {
@@ -90,6 +91,7 @@ public class PlantWater : MonoBehaviour
 
     private void Intoxicate()
     {
+        var navMesh = player.GetComponent<PlayerNavMesh>();
         if (!isToxic) return;
         if (hasToxicCried == false)
         {
@@ -104,17 +106,20 @@ public class PlantWater : MonoBehaviour
         } else if (player.transform.position.x == transform.position.x)
         {
             timeBeforeFullToxic -= Time.deltaTime;
+            navMesh.isDetoxicating = true;
             if(timeBeforeFullToxic <= 0)
             {
                 isToxic = false;
                 hasToxicCried = false;
                 timeBeforeFullToxic = 0f;
+                navMesh.isDetoxicating = false;
                 informGoodStatus?.Invoke(this.GameObject().transform);
                 transform.parent.GetChild(2).gameObject.SetActive(false);
             }
         } else
         {
             timeBeforeFullToxic += Time.deltaTime;
+            navMesh.isDetoxicating = false;
         }
         toxicBar.fillAmount = GetToxicNormalized();
     }
@@ -197,7 +202,7 @@ public class PlantWater : MonoBehaviour
         {
             if(player.transform.position.x == transform.position.x)
             {
-                if(toxicFullMeter >= timeBeforeFullToxic) { informDeath?.Invoke(this.GameObject().transform); }
+                //if(toxicFullMeter >= timeBeforeFullToxic) { informDeath?.Invoke(this.GameObject().transform); }
                 timeBeforeHarvest += Time.deltaTime;
             }
             harvestBar.fillAmount = GetHarvestNormalized();

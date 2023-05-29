@@ -14,6 +14,7 @@ public class PlayerNavMesh : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private int i;
     private bool hasAdded = false;
+    public bool isDetoxicating;
     
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class PlayerNavMesh : MonoBehaviour
         PlantWater.informHarvesting += AddHarvestablePlant;
         PlantHandler.informSeed += AddSeedablePlant;
         PlantHandler.informDoneSeeding += RemoveSeedablePlant;
+        PlantWater.informRemoveSeed += RemoveSeedable;
     }
 
     private void OnDisable()
@@ -38,6 +40,7 @@ public class PlayerNavMesh : MonoBehaviour
         PlantWater.informHarvesting -= AddHarvestablePlant;
         PlantHandler.informSeed -= AddSeedablePlant;
         PlantHandler.informDoneSeeding -= RemoveSeedablePlant;
+        PlantWater.informRemoveSeed -= RemoveSeedable;
     }
 
     private void AddDyingPlant(Transform plant)
@@ -48,7 +51,9 @@ public class PlayerNavMesh : MonoBehaviour
     private void AddSeedablePlant(Transform seedPlace)
     {
         if (targetPoints.Contains(seedPlace)) return;
+        if (isDetoxicating) return;
         if (seedPlace.childCount > 0) return;
+        Debug.Log("Przeszedlem test");
         targetPoints.Add(seedPlace);
     }
 
@@ -74,6 +79,12 @@ public class PlayerNavMesh : MonoBehaviour
         if(!targetPoints.Contains(plant)) return;
         targetPoints.Remove(plant);
         targetPoints.Add(plant.parent.parent.parent);
+    }
+
+    private void RemoveSeedable(Transform plant)
+    {
+        if (!targetPoints.Contains(plant)) return;
+        targetPoints.Remove(plant);
     }
 
     void Update()
