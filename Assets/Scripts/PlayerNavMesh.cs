@@ -16,10 +16,21 @@ public class PlayerNavMesh : MonoBehaviour
     private bool isCritical;
     [SerializeField] private float exhaustionStunTime = 20f;
     public bool isDetoxicating;
-    
+    private bool isWalkInformed;
+    private bool isSitInformed;
+
+    public delegate void InformAnimation();
+
+    public static InformAnimation informWalking;
+    public static InformAnimation informStanding;
+
+    [SerializeField] private Animator playerAnim;
+    private AnimationHandler animHandler;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animHandler = transform.GetChild(1).GetComponent<AnimationHandler>();
     }
 
     private void OnEnable()
@@ -64,7 +75,7 @@ public class PlayerNavMesh : MonoBehaviour
     {
         targetPoints.Remove(seedPlace);
     }
-    
+
     private void AddHarvestablePlant(Transform plant)
     {
         targetPoints.Add(plant);
@@ -72,13 +83,13 @@ public class PlayerNavMesh : MonoBehaviour
 
     private void RemovePlant(Transform plant)
     {
-        if(!targetPoints.Contains(plant)) return;
+        if (!targetPoints.Contains(plant)) return;
         targetPoints.Remove(plant);
     }
 
     private void RemoveDeadPlant(Transform plant)
     {
-        if(!targetPoints.Contains(plant)) return;
+        if (!targetPoints.Contains(plant)) return;
         targetPoints.Remove(plant);
         targetPoints.Add(plant);
     }
@@ -99,6 +110,24 @@ public class PlayerNavMesh : MonoBehaviour
     void Update()
     {
         GoToDestination();
+        CheckWalkingAnimation();
+    }
+
+    private void CheckWalkingAnimation()
+    {
+        if (navMeshAgent.remainingDistance > 0.1f)
+        {
+            if (!isWalkInformed)
+            {
+                playerAnim.SetBool("isSitting", false);
+                informWalking?.Invoke();
+                isWalkInformed = true;
+            }
+        }
+        else
+        {
+            isWalkInformed = false;
+        }
     }
 
     IEnumerator ResetCritical()
@@ -112,7 +141,6 @@ public class PlayerNavMesh : MonoBehaviour
         if (targetPoints.Count() == 1)
         {
             navMeshAgent.destination = targetPoints[0].position;
-            Debug.Log("Siedze na dupie");
         }
         else
         {
@@ -120,8 +148,19 @@ public class PlayerNavMesh : MonoBehaviour
             {
                 for (int j = 1; j < targetPoints.Count(); j++)
                 {
-                    if(targetPoints[j].CompareTag("tree")) { Debug.Log("Wykryto drzewo"); }
-                    navMeshAgent.destination = targetPoints[j].position;
+                    if (animHandler.isStanded)
+                    {
+                        navMeshAgent.destination = targetPoints[j].position;
+                        isSitInformed = false;
+                    }
+                    else
+                    {
+                        if (!isSitInformed)
+                        {
+                            informStanding?.Invoke();
+                            isSitInformed = true;
+                        }
+                    }
                 }
             }
         }
