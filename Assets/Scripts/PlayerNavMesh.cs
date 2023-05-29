@@ -13,7 +13,8 @@ public class PlayerNavMesh : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     private int i;
-    private bool hasAdded = false;
+    private bool isCritical;
+    [SerializeField] private float exhaustionStunTime = 20f;
     public bool isDetoxicating;
     
     private void Awake()
@@ -31,6 +32,7 @@ public class PlayerNavMesh : MonoBehaviour
         PlantHandler.informDoneSeeding += RemoveSeedablePlant;
         PlantWater.informRemoveSeed += RemoveSeedable;
         PlantWater.informCleanRemoval += RemovePlant;
+        ExhaustionHandler.criticalCondition += CriticalCondition;
     }
 
     private void OnDisable()
@@ -43,6 +45,7 @@ public class PlayerNavMesh : MonoBehaviour
         PlantHandler.informDoneSeeding -= RemoveSeedablePlant;
         PlantWater.informRemoveSeed -= RemoveSeedable;
         PlantWater.informCleanRemoval -= RemovePlant;
+        ExhaustionHandler.criticalCondition -= CriticalCondition;
     }
 
     private void AddDyingPlant(Transform plant)
@@ -86,9 +89,22 @@ public class PlayerNavMesh : MonoBehaviour
         targetPoints.Remove(plant);
     }
 
+    private void CriticalCondition()
+    {
+        isCritical = true;
+        navMeshAgent.destination = targetPoints[0].position;
+        StartCoroutine(ResetCritical());
+    }
+
     void Update()
     {
         GoToDestination();
+    }
+
+    IEnumerator ResetCritical()
+    {
+        yield return new WaitForSeconds(exhaustionStunTime);
+        isCritical = false;
     }
 
     private void GoToDestination()
@@ -100,10 +116,13 @@ public class PlayerNavMesh : MonoBehaviour
         }
         else
         {
-            for (int j = 1; j < targetPoints.Count(); j++)
+            if (!isCritical)
             {
-                if(targetPoints[j].CompareTag("tree")) { Debug.Log("Wykryto drzewo"); }
-                navMeshAgent.destination = targetPoints[j].position;
+                for (int j = 1; j < targetPoints.Count(); j++)
+                {
+                    if(targetPoints[j].CompareTag("tree")) { Debug.Log("Wykryto drzewo"); }
+                    navMeshAgent.destination = targetPoints[j].position;
+                }
             }
         }
     }
