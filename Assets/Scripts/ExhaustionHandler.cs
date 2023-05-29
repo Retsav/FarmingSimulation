@@ -9,11 +9,16 @@ public class ExhaustionHandler : MonoBehaviour
     public float exhaustionMax = 100f;
     [SerializeField] private float exhaustionDepletionMultiplier = 1f;
     public float restMultiplier = 1f;
-    
+
+    private float timeBeforeCriticalCondition = 10f;
     public float exhaustionRemaining;
 
     private bool isTimerRunning;
+    private bool isExhaustCritical;
     private IdleTarget idleTarget;
+    
+    public delegate void CriticalCondition();
+    public static CriticalCondition criticalCondition;
 
     private void Awake()
     {
@@ -39,11 +44,10 @@ public class ExhaustionHandler : MonoBehaviour
             {
                 if (idleTarget.isResting) return;
                 exhaustionRemaining -= Time.deltaTime * exhaustionDepletionMultiplier;
-            }
-            else
-            {
-                exhaustionRemaining = 0f;
-                isTimerRunning = false;
+                if (exhaustionRemaining <= timeBeforeCriticalCondition)
+                {
+                    criticalCondition?.Invoke();
+                }
             }
         }
     }

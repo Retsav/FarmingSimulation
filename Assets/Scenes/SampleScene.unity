@@ -3111,6 +3111,11 @@ PrefabInstance:
       propertyPath: plantSpaces.Array.data[8]
       value: 
       objectReference: {fileID: 27768939}
+    - target: {fileID: 4184478949014042774, guid: 0ef662b51602891469b05773ee779742,
+        type: 3}
+      propertyPath: restMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4184478949014042776, guid: 0ef662b51602891469b05773ee779742,
         type: 3}
       propertyPath: targetPoints.Array.data[0]

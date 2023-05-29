@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PlantWater : MonoBehaviour
 {
+    [Header("Dehydration Settings")]
     [SerializeField] public float timeFull = 60f;
     [SerializeField] public float timeBeforeDehydration;
     [SerializeField] public float dehydrationMultiplier = 1f;
@@ -15,26 +16,31 @@ public class PlantWater : MonoBehaviour
     [SerializeField] private float leaveTime = 60f;
     [SerializeField] public bool isTimerRunning;
     [SerializeField] private bool isBeingHydrated;
-    [SerializeField] private bool isHarvestInformed;
-    private bool isSpawningApples = false;
     [SerializeField] private bool hasCried;
+    [Header("Harvest Settings")]
+    [SerializeField] private bool isHarvestInformed;
+    private const float timeHarvesting = 4f;
     [SerializeField] private bool hasApples;
     [SerializeField] private float timeBeforeHarvest;
-    private const float timeHarvesting = 4f;
-    [SerializeField] private bool hasToxicCried = false;
-
-    [SerializeField] private Image hydrationBar;
-    [SerializeField] private Image harvestBar;
-    [SerializeField] private Image toxicBar;
-
+    [Header("Toxicity Settings")]
+    [SerializeField] private float toxicCuringMultiplier = 1f;
+    [SerializeField] private float toxicIncreaseMultiplier = 1f;
     [SerializeField] private float timeBeforeFullToxic;
     [SerializeField] private float toxicFullMeter = 15f;
     [SerializeField] private bool isToxic;
     [SerializeField] private float toxicRollInterval = 10f;
+    [SerializeField] private bool hasToxicCried = false;
+    
 
-    [SerializeField] private GameObject player;
+    private Image hydrationBar;
+    private Image harvestBar;
+    private Image toxicBar;
 
-    [SerializeField] private int GrowLevel = 1;
+
+
+    private GameObject player;
+
+    private int GrowLevel = 1;
 
     public delegate void InformPlayer(Transform plant);
     public static InformPlayer cryForHelp;
@@ -123,7 +129,7 @@ public class PlantWater : MonoBehaviour
             Destroy(transform.parent.parent.GameObject());
         } else if (player.transform.position.x == transform.position.x)
         {
-            timeBeforeFullToxic -= Time.deltaTime;
+            timeBeforeFullToxic -= Time.deltaTime * toxicCuringMultiplier;
             navMesh.isDetoxicating = true;
             if(timeBeforeFullToxic <= 0)
             {
@@ -136,7 +142,7 @@ public class PlantWater : MonoBehaviour
             }
         } else
         {
-            timeBeforeFullToxic += Time.deltaTime;
+            timeBeforeFullToxic += Time.deltaTime * toxicIncreaseMultiplier;
             navMesh.isDetoxicating = false;
         }
         toxicBar.fillAmount = GetToxicNormalized();
@@ -290,11 +296,5 @@ public class PlantWater : MonoBehaviour
     public float GetPlantTimeNormalized()
     {
         return timeBeforeDehydration / timeFull;
-    }
-
-    IEnumerator KillWithDelay()
-    {
-        yield return new WaitForSeconds(2f);
-        transform.parent.parent.GetChild(GrowLevel).GetChild(1).gameObject.SetActive(false);
     }
 }

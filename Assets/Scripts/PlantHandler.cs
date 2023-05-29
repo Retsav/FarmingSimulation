@@ -30,6 +30,11 @@ public class PlantHandler : MonoBehaviour
     private void Update()
     {
         CheckIfEmpty();
+        PlantSeeds();
+    }
+
+    private void PlantSeeds()
+    {
         foreach (var plant in plantSpaces)
         {
             if (plant.childCount == 0)
@@ -40,7 +45,9 @@ public class PlantHandler : MonoBehaviour
                     if (maxTimeSeed >= timeBeforeSeeded)
                     {
                         timeBeforeSeeded += Time.deltaTime;
-                    } else  {
+                    }
+                    else
+                    {
                         informDoneSeeding?.Invoke(plant.GameObject().transform);
                         if (plant.CompareTag("tree"))
                         {
@@ -50,9 +57,11 @@ public class PlantHandler : MonoBehaviour
                         {
                             Instantiate(plantPrefab, plant.position, Quaternion.identity, plant.transform);
                         }
+
                         timeBeforeSeeded = 0f;
                         actionBar.SetActive(false);
                     }
+
                     actionfillBar.fillAmount = GetSeedTimeNormalized();
                 }
                 else
