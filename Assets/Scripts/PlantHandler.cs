@@ -49,7 +49,16 @@ public class PlantHandler : MonoBehaviour
         KneelFix();
         ray = new Ray(transform.position, Vector3.down);
         //Debug.DrawRay(transform.position, Vector3.down * raycastDistance, Color.green );
+    }
 
+    private void OnDestroy()
+    {
+        
+        wasPlantAnimInvoked = false;
+        if (playerAnimator.GetBool("isKneeling"))
+        {
+            playerAnimator.Play("Kneeling To Standing", 0, 0f);
+        }
     }
 
     private void PlantSeeds()
@@ -62,6 +71,7 @@ public class PlantHandler : MonoBehaviour
                 {
                     if (!wasPlantAnimInvoked)
                     {
+                        if (plant.childCount > 0) return;
                         informPlantAnim?.Invoke();
                         wasPlantAnimInvoked = true;
                     } 
@@ -84,6 +94,7 @@ public class PlantHandler : MonoBehaviour
                                 Instantiate(plantPrefab, plant.position, Quaternion.identity, plant.transform);
                             }
                             wasPlantAnimInvoked = false;
+                            playerAnimator.SetBool("isPlanting", false);
                             informDonePlantingAnim?.Invoke();
                             timeBeforeSeeded = 0f;
                             actionBar.SetActive(false);

@@ -41,6 +41,7 @@ public class PlantWater : MonoBehaviour
     private Animator animator;
 
     private PlayerNavMesh playerNavMesh;
+    private PlantHandler plantHandler;
     private GameObject player;
 
     private int GrowLevel = 1;
@@ -66,6 +67,7 @@ public class PlantWater : MonoBehaviour
         harvestBar = transform.parent.GetChild(1).GetChild(2).GetComponent<Image>();
         toxicBar = transform.parent.GetChild(2).GetChild(2).GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player");
+        plantHandler = player.GetComponent<PlantHandler>();
         animHandler = player.transform.GetChild(1).GetComponent<AnimationHandler>();
         animator = player.transform.GetChild(1).GetComponent<Animator>();
     }
@@ -112,6 +114,13 @@ public class PlantWater : MonoBehaviour
             isBeingHydrated = false;
             //informResetAnim?.Invoke();
         }
+    }
+
+    private void OnDestroy()
+    {
+        playerNavMesh.isDetoxicating = false;
+        plantHandler.wasPlantAnimInvoked = false;
+        isBeingHydrated = false;
     }
 
     private void CleanUpMissingTransform()
