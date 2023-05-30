@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Rest
   - tree
+  - plant
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - point
   - Water
   - UI
   - 
