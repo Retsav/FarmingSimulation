@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class PlantWater : MonoBehaviour
@@ -39,7 +40,7 @@ public class PlantWater : MonoBehaviour
     private AnimationHandler animHandler;
     private Animator animator;
 
-
+    private PlayerNavMesh playerNavMesh;
     private GameObject player;
 
     private int GrowLevel = 1;
@@ -55,6 +56,8 @@ public class PlantWater : MonoBehaviour
     public delegate void InformAnim();
 
     public static InformAnim informHydrateAnim;
+    public static InformAnim informHarvestAnim;
+    public static InformAnim informDetoxing;
     public static InformAnim informResetAnim;
 
     private void Awake()
@@ -75,6 +78,7 @@ public class PlantWater : MonoBehaviour
 
     public void Start()
     {
+        playerNavMesh = player.GetComponent<PlayerNavMesh>();
         StartCoroutine(ToxicRoll());
     }
 
@@ -87,6 +91,7 @@ public class PlantWater : MonoBehaviour
         CheckApples();
         CleanUpMissingTransform();
         Intoxicate();
+        CheckDetox();
         TriggerWateringAnim();
         hydrationBar.fillAmount = GetPlantTimeNormalized();
         //CheckStatuses();
@@ -122,7 +127,6 @@ public class PlantWater : MonoBehaviour
 
     private void Intoxicate()
     {
-        var navMesh = player.GetComponent<PlayerNavMesh>();
         if (!isToxic) return;
         if (hasToxicCried == false)
         {
@@ -141,22 +145,30 @@ public class PlantWater : MonoBehaviour
         } else if (player.transform.position.x == transform.position.x)
         {
             timeBeforeFullToxic -= Time.deltaTime * toxicCuringMultiplier;
-            navMesh.isDetoxicating = true;
+            playerNavMesh.isDetoxicating = true;
             if(timeBeforeFullToxic <= 0)
             {
                 isToxic = false;
                 hasToxicCried = false;
                 timeBeforeFullToxic = 0f;
-                navMesh.isDetoxicating = false;
+                playerNavMesh.isDetoxicating = false;
                 informGoodStatus?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
                 transform.parent.GetChild(2).gameObject.SetActive(false);
             }
         } else
         {
             timeBeforeFullToxic += Time.deltaTime * toxicIncreaseMultiplier;
-            navMesh.isDetoxicating = false;
+            playerNavMesh.isDetoxicating = false;
         }
         toxicBar.fillAmount = GetToxicNormalized();
+    }
+
+    private void CheckDetox()
+    {
+        if (playerNavMesh.isDetoxicating)
+        {
+            informDetoxing?.Invoke();
+        }
     }
 
     IEnumerator ToxicRoll()
@@ -240,6 +252,7 @@ public class PlantWater : MonoBehaviour
             if(player.transform.position.x == transform.position.x)
             {
                 timeBeforeHarvest += Time.deltaTime;
+                informHarvestAnim?.Invoke();
             }
             harvestBar.fillAmount = GetHarvestNormalized();
         }
@@ -283,10 +296,6 @@ public class PlantWater : MonoBehaviour
         if (isBeingHydrated)
         {
             informHydrateAnim?.Invoke();
-        }
-        else
-        {
-            //informResetAnim?.Invoke();
         }
     }
 

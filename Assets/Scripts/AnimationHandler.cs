@@ -31,6 +31,8 @@ public class AnimationHandler : MonoBehaviour
         PlantHandler.informDonePlantingAnim += PlantStandUp;
         PlantWater.informHydrateAnim += HydrateAnim;
         PlantWater.informResetAnim += ResetAnims;
+        PlantWater.informHarvestAnim += HarvestAnim;
+        PlantWater.informDetoxing += ToxicAnim;
     }
 
     private void OnDisable()
@@ -42,6 +44,8 @@ public class AnimationHandler : MonoBehaviour
         PlantHandler.informDonePlantingAnim -= PlantStandUp;
         PlantWater.informHydrateAnim -= HydrateAnim;
         PlantWater.informResetAnim -= ResetAnims;
+        PlantWater.informHarvestAnim -= HarvestAnim;
+        PlantWater.informDetoxing -= ToxicAnim;
     }
 
     private void Sit()
@@ -51,6 +55,16 @@ public class AnimationHandler : MonoBehaviour
         isStanded = false;
     }
 
+    private void ToxicAnim()
+    {
+        animator.SetBool("isDetoxing", true);
+    }
+
+    private void HarvestAnim()
+    {
+        animator.SetBool("isPickingFruit", true);
+    }
+    
     private void ResetAnims()
     { 
         animator.SetBool("isWatering", false);

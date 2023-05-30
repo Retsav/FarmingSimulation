@@ -62,7 +62,6 @@ public class PlantHandler : MonoBehaviour
                 {
                     if (!wasPlantAnimInvoked)
                     {
-                        if (playerAnimator.GetBool("isKneeling") && animationHandler.isCriticalKneel) return;
                         informPlantAnim?.Invoke();
                         wasPlantAnimInvoked = true;
                     } 

@@ -151,6 +151,8 @@ public class PlayerNavMesh : MonoBehaviour
         playerAnim.SetBool("isKneeling", false);
         playerAnim.SetBool("isPlanting", false);
         playerAnim.SetBool("isWatering", false);
+        playerAnim.SetBool("isDetoxing", false);
+        playerAnim.SetBool("isPickingFruit", false);
         planthandler.wasPlantAnimInvoked = false;
     }
 
