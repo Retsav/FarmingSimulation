@@ -29,6 +29,8 @@ public class AnimationHandler : MonoBehaviour
         IdleTarget.informSit += Sit;
         PlantHandler.informPlantAnim += Plant;
         PlantHandler.informDonePlantingAnim += PlantStandUp;
+        PlantWater.informHydrateAnim += HydrateAnim;
+        PlantWater.informResetAnim += ResetAnims;
     }
 
     private void OnDisable()
@@ -38,6 +40,8 @@ public class AnimationHandler : MonoBehaviour
         IdleTarget.informSit -= Sit;
         PlantHandler.informPlantAnim -= Plant;
         PlantHandler.informDonePlantingAnim -= PlantStandUp;
+        PlantWater.informHydrateAnim -= HydrateAnim;
+        PlantWater.informResetAnim -= ResetAnims;
     }
 
     private void Sit()
@@ -45,6 +49,11 @@ public class AnimationHandler : MonoBehaviour
         animator.SetBool("isPlayerWalking", false);
         animator.SetBool("isSitting", true);
         isStanded = false;
+    }
+
+    private void ResetAnims()
+    { 
+        animator.SetBool("isWatering", false);
     }
 
     private void PlantStandUp()
@@ -56,6 +65,11 @@ public class AnimationHandler : MonoBehaviour
     private void StandUp()
     {
         animator.SetBool("isSitting", false);
+    }
+
+    private void HydrateAnim()
+    {
+        animator.SetBool("isWatering", true);
     }
 
     private void Plant()

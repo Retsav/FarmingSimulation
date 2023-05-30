@@ -150,6 +150,7 @@ public class PlayerNavMesh : MonoBehaviour
     {
         playerAnim.SetBool("isKneeling", false);
         playerAnim.SetBool("isPlanting", false);
+        playerAnim.SetBool("isWatering", false);
         planthandler.wasPlantAnimInvoked = false;
     }
 

@@ -52,6 +52,11 @@ public class PlantWater : MonoBehaviour
     public static InformPlayer informRemoveSeed;
     public static InformPlayer informCleanRemoval;
 
+    public delegate void InformAnim();
+
+    public static InformAnim informHydrateAnim;
+    public static InformAnim informResetAnim;
+
     private void Awake()
     {
         hydrationBar = transform.GetChild(2).GetComponent<Image>();
@@ -82,6 +87,7 @@ public class PlantWater : MonoBehaviour
         CheckApples();
         CleanUpMissingTransform();
         Intoxicate();
+        TriggerWateringAnim();
         hydrationBar.fillAmount = GetPlantTimeNormalized();
         //CheckStatuses();
     }
@@ -99,6 +105,7 @@ public class PlantWater : MonoBehaviour
         } else 
         {
             isBeingHydrated = false;
+            //informResetAnim?.Invoke();
         }
     }
 
@@ -271,7 +278,17 @@ public class PlantWater : MonoBehaviour
            transform.parent.parent.GetChild(GrowLevel).gameObject.SetActive(true);
     }
 
-
+    private void TriggerWateringAnim()
+    {
+        if (isBeingHydrated)
+        {
+            informHydrateAnim?.Invoke();
+        }
+        else
+        {
+            //informResetAnim?.Invoke();
+        }
+    }
 
     
     public void CalculateTimer()
