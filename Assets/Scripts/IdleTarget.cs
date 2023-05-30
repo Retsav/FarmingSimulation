@@ -14,6 +14,11 @@ public class IdleTarget : MonoBehaviour
     public delegate void InformSitAnimation();
     public static InformSitAnimation informSit;
 
+    private bool debugSit;
+
+    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private AnimationHandler animHandler;
+
     
     private void Awake()
     {
@@ -36,12 +41,19 @@ public class IdleTarget : MonoBehaviour
                 informSit?.Invoke();
                 hasSitInformed = true;
             }
+
+            if (!playerAnimator.GetBool("isSitting") && !debugSit)
+            {
+                playerAnimator.Play("Sit", 0, 0);
+                debugSit = true;
+            }
             isResting = true;
             if (exhaustionHandler.exhaustionRemaining >= exhaustionHandler.exhaustionMax) return;
             exhaustionHandler.exhaustionRemaining += Time.deltaTime * exhaustionHandler.restMultiplier;
         }
         else
         {
+            debugSit = false;
             isResting = false;
             hasSitInformed = false;
         }

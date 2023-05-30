@@ -36,6 +36,8 @@ public class PlantWater : MonoBehaviour
     private Image harvestBar;
     private Image toxicBar;
 
+    private AnimationHandler animHandler;
+    private Animator animator;
 
 
     private GameObject player;
@@ -56,6 +58,8 @@ public class PlantWater : MonoBehaviour
         harvestBar = transform.parent.GetChild(1).GetChild(2).GetComponent<Image>();
         toxicBar = transform.parent.GetChild(2).GetChild(2).GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player");
+        animHandler = player.transform.GetChild(1).GetComponent<AnimationHandler>();
+        animator = player.transform.GetChild(1).GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -175,7 +179,7 @@ public class PlantWater : MonoBehaviour
     {
         if (hasApples) return;
         if (timeBeforeCryingForHelp <= timeBeforeDehydration) return;
-        if (!hasCried && !hasToxicCried)
+        if (!hasCried && !hasToxicCried && animator.GetBool("isPlayerWalking"))
         { 
             cryForHelp?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             hasCried = true;
@@ -184,7 +188,7 @@ public class PlantWater : MonoBehaviour
 
     private void CheckApples()
     {
-        if(hasApples && !isHarvestInformed)
+        if(hasApples && !isHarvestInformed && animator.GetBool("isPlayerWalking"))
         {
             isHarvestInformed = true;
             informHarvesting?.Invoke(this.GameObject().transform.parent.parent.parent.transform);

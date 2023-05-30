@@ -25,12 +25,16 @@ public class PlayerNavMesh : MonoBehaviour
     public static InformAnimation informStanding;
 
     [SerializeField] private Animator playerAnim;
+
     private AnimationHandler animHandler;
+
+    [SerializeField] private PlantHandler planthandler;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animHandler = transform.GetChild(1).GetComponent<AnimationHandler>();
+        planthandler = GetComponent<PlantHandler>();
     }
 
     private void OnEnable()
@@ -111,29 +115,60 @@ public class PlayerNavMesh : MonoBehaviour
     {
         GoToDestination();
         CheckWalkingAnimation();
+        CheckIfFreezed();
+        ReturnDistance();
     }
 
     private void CheckWalkingAnimation()
     {
         if (navMeshAgent.remainingDistance > 0.1f)
         {
-            if (!isWalkInformed)
+            ResetBools();
+            if (!isWalkInformed && !animHandler.isAnimFreezed)
             {
                 playerAnim.SetBool("isSitting", false);
-                informWalking?.Invoke();
+                //informWalking?.Invoke();
+                playerAnim.Play("Walking", 0, 0);
+                playerAnim.SetBool("isPlayerWalking", true);
                 isWalkInformed = true;
             }
         }
         else
         {
+            playerAnim.SetBool("isPlayerWalking", false);
+            animHandler.isAnimFreezed = false;
             isWalkInformed = false;
         }
+    }
+
+    public float ReturnDistance()
+    {
+        return navMeshAgent.remainingDistance;
+    }
+
+    private void ResetBools()
+    {
+        playerAnim.SetBool("isKneeling", false);
+        playerAnim.SetBool("isPlanting", false);
+        planthandler.wasPlantAnimInvoked = false;
     }
 
     IEnumerator ResetCritical()
     {
         yield return new WaitForSeconds(exhaustionStunTime);
         isCritical = false;
+    }
+
+    private void CheckIfFreezed()
+    {
+        if (animHandler.isAnimFreezed)
+        {
+            navMeshAgent.Stop();
+        }
+        else
+        {
+            navMeshAgent.Resume();
+        }
     }
 
     private void GoToDestination()
@@ -148,6 +183,7 @@ public class PlayerNavMesh : MonoBehaviour
             {
                 for (int j = 1; j < targetPoints.Count(); j++)
                 {
+                    if(playerAnim.GetBool("isSitting")) {playerAnim.SetBool("isSitting", false);}
                     if (animHandler.isStanded)
                     {
                         navMeshAgent.destination = targetPoints[j].position;
