@@ -46,6 +46,7 @@ public class PlantHandler : MonoBehaviour
     {
         CheckIfEmpty();
         PlantSeeds();
+        KneelFix();
         ray = new Ray(transform.position, Vector3.down);
         //Debug.DrawRay(transform.position, Vector3.down * raycastDistance, Color.green );
 
@@ -59,11 +60,12 @@ public class PlantHandler : MonoBehaviour
             {
                 if (player.transform.position.x == plant.transform.position.x)
                 {
-                    if (!wasPlantAnimInvoked) 
+                    if (!wasPlantAnimInvoked)
                     {
+                        if (playerAnimator.GetBool("isKneeling") && animationHandler.isCriticalKneel) return;
                         informPlantAnim?.Invoke();
                         wasPlantAnimInvoked = true;
-                    }
+                    } 
                     if (playerAnimator.GetBool("isPlanting"))
                     {
                         actionBar.SetActive(true);
@@ -87,15 +89,35 @@ public class PlantHandler : MonoBehaviour
                             timeBeforeSeeded = 0f;
                             actionBar.SetActive(false);
                         }
-                    } 
+                    }
                     actionfillBar.fillAmount = GetSeedTimeNormalized();
-                } 
-                else
-                {
-                    actionBar.SetActive(false);
                 }
             }
         }
+        if (!playerAnimator.GetBool("isPlanting"))
+        {
+            actionBar.SetActive(false);
+        }
+        if (wasPlantAnimInvoked && !playerAnimator.GetBool("isKneeling"))
+        {
+            Debug.Log("Uratowałem przed shitem");
+            wasPlantAnimInvoked = false;
+        }
+    }
+
+    private void KneelFix()
+    {
+        if (wasPlantAnimInvoked && !playerAnimator.GetBool("isKneeling"))
+        {
+            StartCoroutine(FixKneeling());
+        }
+    }
+
+    IEnumerator FixKneeling()
+    {
+        yield return new WaitForSeconds(3f);
+        Debug.Log("Tried fixing Kneeling");
+        wasPlantAnimInvoked = false;
     }
 
     private float GetSeedTimeNormalized()

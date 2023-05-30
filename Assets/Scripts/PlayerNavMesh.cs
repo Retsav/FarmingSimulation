@@ -163,11 +163,11 @@ public class PlayerNavMesh : MonoBehaviour
     {
         if (animHandler.isAnimFreezed)
         {
-            navMeshAgent.Stop();
+            navMeshAgent.isStopped = true;
         }
         else
         {
-            navMeshAgent.Resume();
+            navMeshAgent.isStopped = false;
         }
     }
 

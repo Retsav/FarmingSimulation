@@ -9,8 +9,10 @@ using UnityEngine.Serialization;
 public class AnimationHandler : MonoBehaviour
 {
     private Animator animator;
+    private PlantHandler plantHandler;
     [SerializeField] public bool isStanded = true;
     [SerializeField] public bool isAnimFreezed;
+    [SerializeField] public bool isCriticalKneel;
 
     private bool wasPlantInvoked;
 
@@ -18,6 +20,7 @@ public class AnimationHandler : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        plantHandler = transform.parent.GetComponent<PlantHandler>();
     }
     private void OnEnable()
     {
@@ -48,6 +51,7 @@ public class AnimationHandler : MonoBehaviour
     {
         animator.SetBool("isKneeling", false);
         animator.SetBool("isPlanting", false);
+        plantHandler.wasPlantAnimInvoked = false;
     }
     private void StandUp()
     {
@@ -56,9 +60,14 @@ public class AnimationHandler : MonoBehaviour
 
     private void Plant()
     {
-        Debug.Log("Planting Invoke");
-        animator.SetBool("isKneeling", true);
-        animator.SetBool("isPlayerWalking", false);
+        if (!wasPlantInvoked)
+        {
+            Debug.Log("Planting Invoke");
+            animator.SetBool("isKneeling", true);
+            animator.SetBool("isPlayerWalking", false);
+            wasPlantInvoked = true;
+        }
+        wasPlantInvoked = false;
     }
 
     public void AlertObservers(string message)
@@ -84,6 +93,7 @@ public class AnimationHandler : MonoBehaviour
         {
             isAnimFreezed = false;
             animator.SetBool("isPlayerWalking", true);
+            isCriticalKneel = false;
         }
 
         if (message.Equals("DebugKneeling"))
@@ -92,6 +102,11 @@ public class AnimationHandler : MonoBehaviour
             {
                 animator.SetBool("isKneeling", false);
             }
+        }
+
+        if (message.Equals("AfterKneel"))
+        {
+            isCriticalKneel = true;
         }
     }
     private void Walk()
