@@ -6,6 +6,9 @@ using UnityEngine;
 public class DebugTools : MonoBehaviour
 {
     [SerializeField] private float timeScaleToSpeed = 2f;
+    [SerializeField] private float permaScaleToSpeed = 10f;
+
+    private bool permaMode;
     private void Update()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -15,6 +18,21 @@ public class DebugTools : MonoBehaviour
         else
         {
             Time.timeScale = 1f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            permaMode = true;
+        } 
+        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            permaMode = false;
+        }
+
+        if (permaMode)
+        {
+            Time.timeScale = permaScaleToSpeed;
         }
     }
 }
