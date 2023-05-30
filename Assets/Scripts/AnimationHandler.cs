@@ -10,28 +10,22 @@ public class AnimationHandler : MonoBehaviour
 {
     private Animator animator;
     [SerializeField] public bool isStanded = true;
-    [SerializeField] private float rotationX = 90f;
-    [SerializeField] private float rotationY = 20f;
+    [SerializeField] public bool isAnimFreezed;
 
-    [SerializeField] private Quaternion currentRotation;
-    private Vector3 currentRotationEulerAngles;
+    private bool wasPlantInvoked;
+
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
-
-    private void Start()
-    {
-        currentRotation = transform.GetChild(0).rotation;
-        Vector3 currentRotationEulerAngles = currentRotation.eulerAngles;
-    }
-
     private void OnEnable()
     {
         PlayerNavMesh.informWalking += Walk;
         PlayerNavMesh.informStanding += StandUp;
         IdleTarget.informSit += Sit;
+        PlantHandler.informPlantAnim += Plant;
+        PlantHandler.informDonePlantingAnim += PlantStandUp;
     }
 
     private void OnDisable()
@@ -39,6 +33,8 @@ public class AnimationHandler : MonoBehaviour
         PlayerNavMesh.informWalking -= Walk;
         PlayerNavMesh.informStanding -= StandUp;
         IdleTarget.informSit -= Sit;
+        PlantHandler.informPlantAnim -= Plant;
+        PlantHandler.informDonePlantingAnim -= PlantStandUp;
     }
 
     private void Sit()
@@ -47,17 +43,55 @@ public class AnimationHandler : MonoBehaviour
         animator.SetBool("isSitting", true);
         isStanded = false;
     }
+
+    private void PlantStandUp()
+    {
+        animator.SetBool("isKneeling", false);
+        animator.SetBool("isPlanting", false);
+    }
     private void StandUp()
     {
         animator.SetBool("isSitting", false);
     }
 
+    private void Plant()
+    {
+        Debug.Log("Planting Invoke");
+        animator.SetBool("isKneeling", true);
+        animator.SetBool("isPlayerWalking", false);
+    }
+
     public void AlertObservers(string message)
     {
-        Debug.Log("Received message");
         if (message.Equals("SittingAnimationEnded"))
         {
             isStanded = true;
+        }
+
+        if (message.Equals("KneeledDown"))
+        {
+            Debug.Log("Knelled Down Message");
+            animator.SetBool("isPlanting", true);
+            animator.SetBool("isKneeling", false);
+        }
+
+        if (message.Equals("StopMotionStart"))
+        {
+            isAnimFreezed = true;
+        }
+
+        if (message.Equals("StopMotionEnd"))
+        {
+            isAnimFreezed = false;
+            animator.SetBool("isPlayerWalking", true);
+        }
+
+        if (message.Equals("DebugKneeling"))
+        {
+            if (animator.GetBool("isKneeling"))
+            {
+                animator.SetBool("isKneeling", false);
+            }
         }
     }
     private void Walk()
