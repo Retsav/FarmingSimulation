@@ -14,8 +14,16 @@ public class AnimationHandler : MonoBehaviour
     [SerializeField] public bool isAnimFreezed;
     [SerializeField] public bool isCriticalKneel;
 
+    [SerializeField] private GameObject wateringCan;
     private bool wasPlantInvoked;
 
+    private void Update()
+    {
+        if(!animator.GetBool("isWatering"))
+        {
+            wateringCan.SetActive(false);
+        }
+    }
 
     private void Awake()
     {
@@ -90,7 +98,6 @@ public class AnimationHandler : MonoBehaviour
     {
         if (!wasPlantInvoked)
         {
-            Debug.Log("Planting Invoke");
             animator.SetBool("isKneeling", true);
             animator.SetBool("isPlayerWalking", false);
             wasPlantInvoked = true;
@@ -107,7 +114,6 @@ public class AnimationHandler : MonoBehaviour
 
         if (message.Equals("KneeledDown"))
         {
-            Debug.Log("Knelled Down Message");
             animator.SetBool("isPlanting", true);
             animator.SetBool("isKneeling", false);
         }
@@ -135,6 +141,14 @@ public class AnimationHandler : MonoBehaviour
         if (message.Equals("AfterKneel"))
         {
             isCriticalKneel = true;
+        }
+        if(message.Equals("TurnOnWaterCan"))
+        {
+            wateringCan.SetActive(true);
+        }
+        if(message.Equals("TurnOffWaterCan"))
+        {
+            wateringCan.SetActive(false);
         }
     }
     private void Walk()

@@ -136,20 +136,17 @@ MonoBehaviour:
   leaveTime: 280
   isTimerRunning: 0
   isBeingHydrated: 0
-  isHarvestInformed: 0
   hasCried: 0
+  isHarvestInformed: 0
   hasApples: 0
   timeBeforeHarvest: 0.1
-  hasToxicCried: 0
-  hydrationBar: {fileID: 0}
-  harvestBar: {fileID: 0}
-  toxicBar: {fileID: 0}
+  toxicCuringMultiplier: 2
+  toxicIncreaseMultiplier: 1
   timeBeforeFullToxic: 0
   toxicFullMeter: 85
   isToxic: 0
   toxicRollInterval: 40
-  player: {fileID: 0}
-  GrowLevel: 1
+  hasToxicCried: 0
 --- !u!1 &850593043260059120
 GameObject:
   m_ObjectHideFlags: 0

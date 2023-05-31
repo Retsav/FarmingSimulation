@@ -36,6 +36,16 @@ public class PlantHandler : MonoBehaviour
 
     [SerializeField] private AnimationHandler animationHandler;
     [SerializeField] private Animator playerAnimator;
+
+    private float kneelEndTime = 3f;
+    [SerializeField] private float kneelTime;
+    [SerializeField] private bool isKneelTimerRunning;
+    [SerializeField] private bool isKneelingBroken;
+
+    public delegate void InformPlantSound();
+
+    public static InformPlantSound informPlantSoundStart;
+    public static InformPlantSound informPlantSoundEnd;
     private void Awake()
     {
         player = GameObject.FindWithTag("Player");
@@ -46,9 +56,10 @@ public class PlantHandler : MonoBehaviour
     {
         CheckIfEmpty();
         PlantSeeds();
-        KneelFix();
+        //KneelFix();
         ray = new Ray(transform.position, Vector3.down);
         //Debug.DrawRay(transform.position, Vector3.down * raycastDistance, Color.green );
+        KneelingFix();
     }
 
     private void OnDestroy()
@@ -61,6 +72,32 @@ public class PlantHandler : MonoBehaviour
         }
     }
 
+    private void KneelingFix()
+    {
+        if(playerAnimator.GetBool("isKneeling"))
+        {
+            isKneelTimerRunning = true;
+            if(isKneelTimerRunning)
+            {
+                kneelTime += Time.deltaTime;
+                if(kneelTime >= kneelEndTime)
+                {
+                    isKneelTimerRunning = false;
+                    playerAnimator.SetBool("isKneeling", false);
+                    playerAnimator.SetBool("isPlanting", true);
+                    isKneelingBroken = true;
+                    kneelTime = 0f;
+                }
+            }
+        } else
+        {
+            kneelTime = 0f;
+            isKneelingBroken = false;
+            isKneelTimerRunning = false;
+        }
+    }
+
+
     private void PlantSeeds()
     {
         foreach (var plant in plantSpaces)
@@ -69,7 +106,7 @@ public class PlantHandler : MonoBehaviour
             {
                 if (player.transform.position.x == plant.transform.position.x)
                 {
-                    if (!wasPlantAnimInvoked)
+                    if (!wasPlantAnimInvoked && !isKneelingBroken)
                     {
                         if (plant.childCount > 0) return;
                         informPlantAnim?.Invoke();
@@ -77,6 +114,7 @@ public class PlantHandler : MonoBehaviour
                     } 
                     if (playerAnimator.GetBool("isPlanting"))
                     {
+                        informPlantSoundStart?.Invoke();
                         actionBar.SetActive(true);
                         if (maxTimeSeed >= timeBeforeSeeded)
                         {
@@ -96,6 +134,7 @@ public class PlantHandler : MonoBehaviour
                             wasPlantAnimInvoked = false;
                             playerAnimator.SetBool("isPlanting", false);
                             informDonePlantingAnim?.Invoke();
+                            informPlantSoundEnd?.Invoke();
                             timeBeforeSeeded = 0f;
                             actionBar.SetActive(false);
                         }
@@ -108,27 +147,9 @@ public class PlantHandler : MonoBehaviour
         {
             actionBar.SetActive(false);
         }
-        if (wasPlantAnimInvoked && !playerAnimator.GetBool("isKneeling"))
-        {
-            Debug.Log("Uratowałem przed shitem");
-            wasPlantAnimInvoked = false;
-        }
+
     }
 
-    private void KneelFix()
-    {
-        if (wasPlantAnimInvoked && !playerAnimator.GetBool("isKneeling"))
-        {
-            StartCoroutine(FixKneeling());
-        }
-    }
-
-    IEnumerator FixKneeling()
-    {
-        yield return new WaitForSeconds(3f);
-        Debug.Log("Tried fixing Kneeling");
-        wasPlantAnimInvoked = false;
-    }
 
     private float GetSeedTimeNormalized()
     {

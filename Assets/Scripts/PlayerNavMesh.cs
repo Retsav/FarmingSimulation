@@ -24,6 +24,10 @@ public class PlayerNavMesh : MonoBehaviour
     public static InformAnimation informWalking;
     public static InformAnimation informStanding;
 
+    public delegate void InformSound();
+
+    public static InformSound informStopSounds;
+
     [SerializeField] private Animator playerAnim;
 
     private AnimationHandler animHandler;
@@ -119,15 +123,20 @@ public class PlayerNavMesh : MonoBehaviour
         ReturnDistance();
     }
 
+    private void ResetSound()
+    {
+        informStopSounds?.Invoke();
+    }
+
     private void CheckWalkingAnimation()
     {
         if (navMeshAgent.remainingDistance > 0.1f)
         {
             ResetBools();
+            ResetSound();
             if (!isWalkInformed && !animHandler.isAnimFreezed)
             {
                 playerAnim.SetBool("isSitting", false);
-                //informWalking?.Invoke();
                 playerAnim.Play("Walking", 0, 0);
                 playerAnim.SetBool("isPlayerWalking", true);
                 isWalkInformed = true;

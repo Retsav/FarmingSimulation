@@ -37,7 +37,6 @@ public class IdleTarget : MonoBehaviour
         {
             if (!hasSitInformed)
             {
-                Debug.Log("Invoking Sitting");
                 informSit?.Invoke();
                 hasSitInformed = true;
             }

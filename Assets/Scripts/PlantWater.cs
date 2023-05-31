@@ -61,6 +61,19 @@ public class PlantWater : MonoBehaviour
     public static InformAnim informDetoxing;
     public static InformAnim informResetAnim;
 
+    public delegate void InformSound();
+
+    public static InformSound informHydrateSoundStart;
+    public static InformSound informHydrateSoundEnd;
+    public static InformSound informToxicSoundStart;
+    public static InformSound informToxicSoundEnd;
+    public static InformSound informHarvestSoundStart;
+    public static InformSound informHarvestSoundEnd;
+
+    public delegate void InformUI();
+
+    public static InformUI informHarvestUI;
+
     private void Awake()
     {
         hydrationBar = transform.GetChild(2).GetComponent<Image>();
@@ -153,6 +166,7 @@ public class PlantWater : MonoBehaviour
             Destroy(transform.parent.parent.GameObject());
         } else if (player.transform.position.x == transform.position.x)
         {
+            informToxicSoundStart?.Invoke();
             timeBeforeFullToxic -= Time.deltaTime * toxicCuringMultiplier;
             playerNavMesh.isDetoxicating = true;
             if(timeBeforeFullToxic <= 0)
@@ -161,6 +175,7 @@ public class PlantWater : MonoBehaviour
                 hasToxicCried = false;
                 timeBeforeFullToxic = 0f;
                 playerNavMesh.isDetoxicating = false;
+                informToxicSoundEnd?.Invoke();
                 informGoodStatus?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
                 transform.parent.GetChild(2).gameObject.SetActive(false);
             }
@@ -197,9 +212,13 @@ public class PlantWater : MonoBehaviour
     private void Hydrate()
     {
         isBeingHydrated = true;
-        if(timeBeforeDehydration <= timeFull)
+        informHydrateSoundStart?.Invoke();
+        if (timeBeforeDehydration <= timeFull)
         {
             timeBeforeDehydration += Time.deltaTime * hydrationMultiplier;   
+        } else
+        {
+            informHydrateSoundEnd?.Invoke();
         }
     }
 
@@ -256,12 +275,15 @@ public class PlantWater : MonoBehaviour
             informGoodStatus?.Invoke(this.GameObject().transform.parent.parent.parent.transform);
             informRemoveSeed?.Invoke(transform.parent.parent.parent.GameObject().transform);
             timeBeforeHarvest = 0f;
+            informHarvestSoundEnd?.Invoke();
+            informHarvestUI?.Invoke();
         } else
         {
             if(player.transform.position.x == transform.position.x)
             {
                 timeBeforeHarvest += Time.deltaTime;
                 informHarvestAnim?.Invoke();
+                informHarvestSoundStart?.Invoke();
             }
             harvestBar.fillAmount = GetHarvestNormalized();
         }
