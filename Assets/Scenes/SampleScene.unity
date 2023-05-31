@@ -168,6 +168,51 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &91937128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91937129}
+  - component: {fileID: 91937130}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (23)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &91937129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91937128}
+  m_LocalRotation: {x: -0, y: 0.9369731, z: -0, w: 0.34940162}
+  m_LocalPosition: {x: 10.04, y: 0, z: -27.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782060084}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
+--- !u!65 &91937130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91937128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &144432047
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,8 +287,216 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &281806856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4184478949014042778, guid: 0ef662b51602891469b05773ee779742,
+    type: 3}
+  m_PrefabInstance: {fileID: 4184478950453747934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &281806862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281806856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec2825316a76964eab1e7c50f8e066a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipList:
+  - {fileID: 8300000, guid: bb414c0ff6611b1438af839d713d1d17, type: 3}
+  - {fileID: 8300000, guid: df306ca97dfbb05468c2297b50c7df71, type: 3}
+  - {fileID: 8300000, guid: 584bc6b623ab4fb4eb91ac3b0e6f4d95, type: 3}
+--- !u!82 &281806863
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281806856}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &282710052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 282710053}
+  - component: {fileID: 282710054}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (21)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &282710053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282710052}
+  m_LocalRotation: {x: -0, y: 0.9369731, z: -0, w: 0.34940162}
+  m_LocalPosition: {x: 1.8713875, y: 0, z: -6.3087234}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782060084}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
+--- !u!65 &282710054
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282710052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &327362249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327362250}
+  - component: {fileID: 327362251}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (20)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327362250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327362249}
+  m_LocalRotation: {x: -0, y: 0.9369731, z: -0, w: 0.34940162}
+  m_LocalPosition: {x: -4.99, y: 0, z: -0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782060084}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
+--- !u!65 &327362251
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327362249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +510,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -297,7 +551,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 48
+  field of view: 63.5
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -323,7 +577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.33976698, y: -0, z: -0, w: 0.9405097}
-  m_LocalPosition: {x: 21.51, y: 33.49, z: -40.73}
+  m_LocalPosition: {x: 27.61, y: 52.7, z: -47.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -375,8 +629,163 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90a2df5e5942f049b7a1ee5b7f8dfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScaleToSpeed: 25
-  permaScaleToSpeed: 10
+  timeScaleToSpeed: 75
+  permaScaleToSpeed: 50
+--- !u!82 &330585549
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 65de179636d3ab148b6dcbcdcf30a8a4, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.158
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &390162961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 390162962}
+  - component: {fileID: 390162964}
+  - component: {fileID: 390162963}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (27)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &390162962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390162961}
+  m_LocalRotation: {x: -0, y: 0.6270991, z: -0, w: 0.77893955}
+  m_LocalPosition: {x: -18.648718, y: 0, z: -22.359158}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364004643}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 77.673, z: 0}
+--- !u!65 &390162963
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390162961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!114 &390162964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390162961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9ead4d752b1eb448bb0f9329e0d5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTaken: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +879,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
@@ -563,47 +972,92 @@ PrefabInstance:
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 1447188007}
+      objectReference: {fileID: 510748030}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1463409893}
+      objectReference: {fileID: 1675070168}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[2]
       value: 
-      objectReference: {fileID: 950696950}
+      objectReference: {fileID: 973436268}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[3]
       value: 
-      objectReference: {fileID: 1883733012}
+      objectReference: {fileID: 1368584249}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[4]
       value: 
-      objectReference: {fileID: 1710002895}
+      objectReference: {fileID: 488380644}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[5]
       value: 
-      objectReference: {fileID: 1058671834}
+      objectReference: {fileID: 1137924887}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[6]
       value: 
-      objectReference: {fileID: 1413713110}
+      objectReference: {fileID: 1776309140}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[7]
       value: 
-      objectReference: {fileID: 1297812666}
+      objectReference: {fileID: 676102599}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[8]
       value: 
-      objectReference: {fileID: 1271016899}
+      objectReference: {fileID: 1611121363}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: chickenPatrolPoints.Array.data[9]
+      value: 
+      objectReference: {fileID: 1611121363}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: chickenPatrolPoints.Array.data[10]
+      value: 
+      objectReference: {fileID: 1611121363}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: chickenPatrolPoints.Array.data[11]
+      value: 
+      objectReference: {fileID: 1611121363}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: chickenPatrolPoints.Array.data[12]
+      value: 
+      objectReference: {fileID: 1611121363}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: chickenPatrolPoints.Array.data[13]
+      value: 
+      objectReference: {fileID: 1611121363}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: chickenPatrolPoints.Array.data[14]
+      value: 
+      objectReference: {fileID: 1611121363}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: chickenPatrolPoints.Array.data[15]
+      value: 
+      objectReference: {fileID: 1611121363}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: chickenPatrolPoints.Array.data[16]
+      value: 
+      objectReference: {fileID: 1611121363}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: chickenPatrolPoints.Array.data[17]
+      value: 
+      objectReference: {fileID: 1611121363}
     - target: {fileID: 7850210692756651962, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: m_Name
@@ -611,6 +1065,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94b1dcdfb854b51429433333158ab1e6, type: 3}
+--- !u!1 &488380644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 488380645}
+  - component: {fileID: 488380646}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (13)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &488380645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488380644}
+  m_LocalRotation: {x: -0, y: 0.4075485, z: -0, w: 0.91318357}
+  m_LocalPosition: {x: 9.38, y: 0, z: -8.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487162802}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 48.102, z: 0}
+--- !u!65 &488380646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488380644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &505775726
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,8 +1148,112 @@ Transform:
   - {fileID: 1553152900}
   - {fileID: 27768939}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &510748030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510748031}
+  - component: {fileID: 510748033}
+  - component: {fileID: 510748032}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510748031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510748030}
+  m_LocalRotation: {x: -0, y: 0.4075485, z: -0, w: 0.91318357}
+  m_LocalPosition: {x: -16.466747, y: 0, z: -15.677429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487162802}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 48.102, z: 0}
+--- !u!65 &510748032
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510748030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!114 &510748033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510748030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9ead4d752b1eb448bb0f9329e0d5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTaken: 0
+--- !u!1 &544866855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544866856}
+  - component: {fileID: 544866857}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (25)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &544866856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544866855}
+  m_LocalRotation: {x: -0, y: 0.9369731, z: -0, w: 0.34940162}
+  m_LocalPosition: {x: -1.7276573, y: 0, z: -17.060364}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782060084}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
+--- !u!65 &544866857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544866855}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!4 &562021457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 260c2c2f0ff6d9a40a2921bf31a69a80,
@@ -752,8 +1355,10 @@ RectTransform:
   m_Children:
   - {fileID: 1355066324}
   - {fileID: 1967312470}
+  - {fileID: 1644417594}
+  - {fileID: 1830319522}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -773,6 +1378,97 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 1910429893}
+  appleText: {fileID: 1830319523}
+--- !u!1 &676102599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 676102600}
+  - component: {fileID: 676102601}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (16)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &676102600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676102599}
+  m_LocalRotation: {x: -0, y: 0.4075485, z: -0, w: 0.91318357}
+  m_LocalPosition: {x: 11.04, y: 0, z: -16.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487162802}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 48.102, z: 0}
+--- !u!65 &676102601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676102599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &823638170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 823638171}
+  - component: {fileID: 823638172}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (32)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &823638171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823638170}
+  m_LocalRotation: {x: -0, y: 0.6270991, z: -0, w: 0.77893955}
+  m_LocalPosition: {x: -11.666218, y: 0, z: -21.897793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364004643}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 77.673, z: 0}
+--- !u!65 &823638172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823638170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,8 +1516,53 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &878871733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 878871734}
+  - component: {fileID: 878871735}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (34)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &878871734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878871733}
+  m_LocalRotation: {x: -0, y: 0.6270991, z: -0, w: 0.77893955}
+  m_LocalPosition: {x: 2.3771286, y: 0, z: -24.284657}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364004643}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 77.673, z: 0}
+--- !u!65 &878871735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878871733}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &879047326
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +1608,65 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &884910704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 884910705}
+  - component: {fileID: 884910707}
+  - component: {fileID: 884910706}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (18)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &884910705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884910704}
+  m_LocalRotation: {x: -0, y: 0.9369731, z: -0, w: 0.34940162}
+  m_LocalPosition: {x: -10.093254, y: 0, z: 2.3255005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782060084}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
+--- !u!65 &884910706
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884910704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!114 &884910707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884910704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9ead4d752b1eb448bb0f9329e0d5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTaken: 0
 --- !u!1 &913075024
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,90 +1712,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &921168932
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.055257
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.055257
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 18.493269
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 23.909687
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.99
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 23.308506
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: f2c41988ea1e62648a44d4cf7e7d1a38,
-        type: 3}
-      propertyPath: m_Name
-      value: watering can
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f2c41988ea1e62648a44d4cf7e7d1a38, type: 3}
 --- !u!1001 &932636327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1095,6 +1811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 950696951}
+  - component: {fileID: 950696952}
   m_Layer: 0
   m_Name: ChickenPatrolPoint (2)
   m_TagString: Untagged
@@ -1114,15 +1831,73 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1346858927}
+  m_Father: {fileID: 1234955741}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &950696952
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950696950}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!4 &962892732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7850210692756651960, guid: 94b1dcdfb854b51429433333158ab1e6,
     type: 3}
   m_PrefabInstance: {fileID: 2001678570}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &973436268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 973436269}
+  - component: {fileID: 973436270}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &973436269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973436268}
+  m_LocalRotation: {x: -0, y: 0.4075485, z: -0, w: 0.91318357}
+  m_LocalPosition: {x: -17.11, y: 0, z: -11.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487162802}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 48.102, z: 0}
+--- !u!65 &973436270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973436268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1001 &987823213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1207,6 +1982,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87bca6d2b97eb7446a4812f030289e4b, type: 3}
+--- !u!1 &1014494683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1014494684}
+  - component: {fileID: 1014494685}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (24)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1014494684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014494683}
+  m_LocalRotation: {x: -0, y: 0.9369731, z: -0, w: 0.34940162}
+  m_LocalPosition: {x: -17.27, y: 2.01, z: 0.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782060084}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
+--- !u!65 &1014494685
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014494683}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!95 &1031988695 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 758046451301629283, guid: 0ef662b51602891469b05773ee779742,
@@ -1243,7 +2063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1035784688
 Transform:
   m_ObjectHideFlags: 0
@@ -1331,6 +2151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1058671835}
+  - component: {fileID: 1058671836}
   m_Layer: 0
   m_Name: ChickenPatrolPoint (5)
   m_TagString: Untagged
@@ -1350,9 +2171,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1346858927}
+  m_Father: {fileID: 1234955741}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1058671836
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058671834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1073880212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +2232,51 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1088494664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1088494665}
+  - component: {fileID: 1088494666}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (19)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1088494665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088494664}
+  m_LocalRotation: {x: -0, y: 0.9369731, z: -0, w: 0.34940162}
+  m_LocalPosition: {x: -12.882305, y: 0, z: -0.09056854}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782060084}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
+--- !u!65 &1088494666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088494664}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1001 &1097033436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1469,47 +2348,47 @@ PrefabInstance:
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 1447188007}
+      objectReference: {fileID: 884910704}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1463409893}
+      objectReference: {fileID: 1088494664}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[2]
       value: 
-      objectReference: {fileID: 950696950}
+      objectReference: {fileID: 327362249}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[3]
       value: 
-      objectReference: {fileID: 1883733012}
+      objectReference: {fileID: 282710052}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[4]
       value: 
-      objectReference: {fileID: 1710002895}
+      objectReference: {fileID: 1614978353}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[5]
       value: 
-      objectReference: {fileID: 1058671834}
+      objectReference: {fileID: 91937128}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[6]
       value: 
-      objectReference: {fileID: 1413713110}
+      objectReference: {fileID: 1014494683}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[7]
       value: 
-      objectReference: {fileID: 1297812666}
+      objectReference: {fileID: 544866855}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[8]
       value: 
-      objectReference: {fileID: 1271016899}
+      objectReference: {fileID: 1389814127}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[9]
@@ -1562,6 +2441,96 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94b1dcdfb854b51429433333158ab1e6, type: 3}
+--- !u!1 &1137924887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1137924888}
+  - component: {fileID: 1137924889}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1137924888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137924887}
+  m_LocalRotation: {x: -0, y: 0.4075485, z: -0, w: 0.91318357}
+  m_LocalPosition: {x: -12.9, y: 0, z: -9.29}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487162802}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 48.102, z: 0}
+--- !u!65 &1137924889
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137924887}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &1182317592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1182317593}
+  - component: {fileID: 1182317594}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (29)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1182317593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182317592}
+  m_LocalRotation: {x: -0, y: 0.6270991, z: -0, w: 0.77893955}
+  m_LocalPosition: {x: -9.98, y: 0, z: -18.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364004643}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 77.673, z: 0}
+--- !u!65 &1182317594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182317592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1197567230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,7 +2596,47 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1234955740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1234955741}
+  m_Layer: 0
+  m_Name: Chicken1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1234955741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234955740}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1447188008}
+  - {fileID: 1463409894}
+  - {fileID: 950696951}
+  - {fileID: 1883733013}
+  - {fileID: 1710002896}
+  - {fileID: 1058671835}
+  - {fileID: 1413713111}
+  - {fileID: 1297812667}
+  - {fileID: 1271016900}
+  m_Father: {fileID: 1346858927}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1236184464
 GameObject:
@@ -1674,6 +2683,96 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1244077861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1244077862}
+  - component: {fileID: 1244077863}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (28)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1244077862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244077861}
+  m_LocalRotation: {x: -0, y: 0.6270991, z: -0, w: 0.77893955}
+  m_LocalPosition: {x: -17.860937, y: 0, z: -25.964092}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364004643}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 77.673, z: 0}
+--- !u!65 &1244077863
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244077861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &1254293303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1254293304}
+  - component: {fileID: 1254293305}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (31)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1254293304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254293303}
+  m_LocalRotation: {x: -0, y: 0.6270991, z: -0, w: 0.77893955}
+  m_LocalPosition: {x: -3.58, y: 0, z: -24.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364004643}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 77.673, z: 0}
+--- !u!65 &1254293305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254293303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1271016899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,6 +2782,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1271016900}
+  - component: {fileID: 1271016901}
   m_Layer: 0
   m_Name: ChickenPatrolPoint (8)
   m_TagString: Untagged
@@ -1698,13 +2798,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271016899}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.32, y: 0, z: -3.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1346858927}
+  m_Father: {fileID: 1234955741}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1271016901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271016899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1297812666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +2827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1297812667}
+  - component: {fileID: 1297812668}
   m_Layer: 0
   m_Name: ChickenPatrolPoint (7)
   m_TagString: Untagged
@@ -1733,9 +2847,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1346858927}
+  m_Father: {fileID: 1234955741}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1297812668
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297812666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1318881403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,7 +2896,7 @@ Transform:
   - {fileID: 1774583480}
   - {fileID: 945069707}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1346858926
 GameObject:
@@ -1799,17 +2926,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1447188008}
-  - {fileID: 1463409894}
-  - {fileID: 950696951}
-  - {fileID: 1883733013}
-  - {fileID: 1710002896}
-  - {fileID: 1058671835}
-  - {fileID: 1413713111}
-  - {fileID: 1297812667}
-  - {fileID: 1271016900}
+  - {fileID: 1234955741}
+  - {fileID: 1487162802}
+  - {fileID: 1782060084}
+  - {fileID: 1364004643}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1355066323
 GameObject:
@@ -1946,6 +3068,136 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355066323}
   m_CullTransparentMesh: 1
+--- !u!1 &1364004642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1364004643}
+  m_Layer: 0
+  m_Name: Chicken4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1364004643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364004642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 390162962}
+  - {fileID: 1244077862}
+  - {fileID: 1182317593}
+  - {fileID: 1789238775}
+  - {fileID: 1254293304}
+  - {fileID: 823638171}
+  - {fileID: 1600021992}
+  - {fileID: 878871734}
+  - {fileID: 1423306593}
+  m_Father: {fileID: 1346858927}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1368584249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1368584250}
+  - component: {fileID: 1368584251}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1368584250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368584249}
+  m_LocalRotation: {x: -0, y: 0.4075485, z: -0, w: 0.91318357}
+  m_LocalPosition: {x: -6.21, y: 0, z: -3.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487162802}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 48.102, z: 0}
+--- !u!65 &1368584251
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368584249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &1389814127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1389814128}
+  - component: {fileID: 1389814129}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (26)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1389814128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389814127}
+  m_LocalRotation: {x: -0, y: 0.9369731, z: -0, w: 0.34940162}
+  m_LocalPosition: {x: 5.663246, y: 0.865, z: -22.009064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782060084}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
+--- !u!65 &1389814129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389814127}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1413713110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,6 +3207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1413713111}
+  - component: {fileID: 1413713112}
   m_Layer: 0
   m_Name: ChickenPatrolPoint (6)
   m_TagString: Untagged
@@ -1974,9 +3227,67 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1346858927}
+  m_Father: {fileID: 1234955741}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1413713112
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413713110}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &1423306592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1423306593}
+  - component: {fileID: 1423306594}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (35)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1423306593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423306592}
+  m_LocalRotation: {x: -0, y: 0.6270991, z: -0, w: 0.77893955}
+  m_LocalPosition: {x: 10.258129, y: 0.865, z: -20.160908}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364004643}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 77.673, z: 0}
+--- !u!65 &1423306594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423306592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1447188007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,6 +3298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1447188008}
   - component: {fileID: 1447188009}
+  - component: {fileID: 1447188010}
   m_Layer: 0
   m_Name: ChickenPatrolPoint
   m_TagString: Untagged
@@ -2006,7 +3318,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1346858927}
+  m_Father: {fileID: 1234955741}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1447188009
@@ -2022,6 +3334,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTaken: 0
+--- !u!65 &1447188010
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447188007}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1463409893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,6 +3356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1463409894}
+  - component: {fileID: 1463409895}
   m_Layer: 0
   m_Name: ChickenPatrolPoint (1)
   m_TagString: Untagged
@@ -2050,6 +3376,59 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 1234955741}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1463409895
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463409893}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &1487162801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487162802}
+  m_Layer: 0
+  m_Name: Chicken2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1487162802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487162801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 510748031}
+  - {fileID: 1675070169}
+  - {fileID: 973436269}
+  - {fileID: 1368584250}
+  - {fileID: 488380645}
+  - {fileID: 1137924888}
+  - {fileID: 1776309141}
+  - {fileID: 676102600}
+  - {fileID: 1611121364}
   m_Father: {fileID: 1346858927}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2250,12 +3629,327 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598874054}
   m_CullTransparentMesh: 1
+--- !u!1 &1600021991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1600021992}
+  - component: {fileID: 1600021993}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (33)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1600021992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600021991}
+  m_LocalRotation: {x: -0, y: 0.6270991, z: -0, w: 0.77893955}
+  m_LocalPosition: {x: -10.528313, y: 0, z: -27.104939}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364004643}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 77.673, z: 0}
+--- !u!65 &1600021993
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600021991}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!4 &1606058733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7850210692756651960, guid: 94b1dcdfb854b51429433333158ab1e6,
     type: 3}
   m_PrefabInstance: {fileID: 1097033436}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1611121363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1611121364}
+  - component: {fileID: 1611121365}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (17)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1611121364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611121363}
+  m_LocalRotation: {x: -0, y: 0.4075485, z: -0, w: 0.91318357}
+  m_LocalPosition: {x: 7.59, y: 0.865, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487162802}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 48.102, z: 0}
+--- !u!65 &1611121365
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611121363}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &1614978353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1614978354}
+  - component: {fileID: 1614978355}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (22)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1614978354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614978353}
+  m_LocalRotation: {x: -0, y: 0.9369731, z: -0, w: 0.34940162}
+  m_LocalPosition: {x: -1.4769936, y: 0, z: -9.209263}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1782060084}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
+--- !u!65 &1614978355
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614978353}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &1644417593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1644417594}
+  - component: {fileID: 1644417596}
+  - component: {fileID: 1644417595}
+  m_Layer: 5
+  m_Name: Text (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1644417594
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644417593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 652245098}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -25, y: -12}
+  m_SizeDelta: {x: 291.0457, y: 50}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1644417595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644417593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Apples Harvested
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4279374387
+  m_fontColor: {r: 0.1981132, g: 0.0719562, b: 0.0719562, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1644417596
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644417593}
+  m_CullTransparentMesh: 1
+--- !u!1 &1675070168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1675070169}
+  - component: {fileID: 1675070170}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1675070169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675070168}
+  m_LocalRotation: {x: -0, y: 0.4075485, z: -0, w: 0.91318357}
+  m_LocalPosition: {x: -14.002541, y: 0, z: -18.424034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487162802}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 48.102, z: 0}
+--- !u!65 &1675070170
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675070168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1681566758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,7 +4015,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710002895
 GameObject:
@@ -2332,6 +4026,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1710002896}
+  - component: {fileID: 1710002897}
   m_Layer: 0
   m_Name: ChickenPatrolPoint (4)
   m_TagString: Untagged
@@ -2347,13 +4042,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710002895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.330002, y: 0, z: -5.770008}
+  m_LocalPosition: {x: -17.26, y: 0, z: -3.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1346858927}
+  m_Father: {fileID: 1234955741}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1710002897
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710002895}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1001 &1762529562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2444,6 +4152,271 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 470454282}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1776309140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776309141}
+  - component: {fileID: 1776309142}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (15)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1776309141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776309140}
+  m_LocalRotation: {x: -0, y: 0.4075485, z: -0, w: 0.91318357}
+  m_LocalPosition: {x: -7.062031, y: 0, z: -15.797607}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487162802}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 48.102, z: 0}
+--- !u!65 &1776309142
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776309140}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &1782060083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1782060084}
+  m_Layer: 0
+  m_Name: Chicken3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1782060084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782060083}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 884910705}
+  - {fileID: 1088494665}
+  - {fileID: 327362250}
+  - {fileID: 282710053}
+  - {fileID: 1614978354}
+  - {fileID: 91937129}
+  - {fileID: 1014494684}
+  - {fileID: 544866856}
+  - {fileID: 1389814128}
+  m_Father: {fileID: 1346858927}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1789238774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1789238775}
+  - component: {fileID: 1789238776}
+  m_Layer: 0
+  m_Name: ChickenPatrolPoint (30)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1789238775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789238774}
+  m_LocalRotation: {x: -0, y: 0.6270991, z: -0, w: 0.77893955}
+  m_LocalPosition: {x: 4.88, y: 0, z: -13.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364004643}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 77.673, z: 0}
+--- !u!65 &1789238776
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789238774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
+--- !u!1 &1830319521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1830319522}
+  - component: {fileID: 1830319524}
+  - component: {fileID: 1830319523}
+  m_Layer: 5
+  m_Name: AppleCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1830319522
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830319521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 652245098}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -25, y: -42}
+  m_SizeDelta: {x: 291.0457, y: 50}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1830319523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830319521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 0
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278230013
+  m_fontColor: {r: 0.990566, g: 0.60600877, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 44
+  m_fontSizeBase: 44
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1830319524
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830319521}
+  m_CullTransparentMesh: 1
 --- !u!1 &1883733012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2453,6 +4426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1883733013}
+  - component: {fileID: 1883733014}
   m_Layer: 0
   m_Name: ChickenPatrolPoint (3)
   m_TagString: Untagged
@@ -2472,9 +4446,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1346858927}
+  m_Father: {fileID: 1234955741}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1883733014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883733012}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: -1.48, z: 0}
 --- !u!1 &1910429891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2566,7 +4553,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 260c2c2f0ff6d9a40a2921bf31a69a80,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 260c2c2f0ff6d9a40a2921bf31a69a80,
         type: 3}
@@ -3024,47 +5011,47 @@ PrefabInstance:
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 1447188007}
+      objectReference: {fileID: 390162961}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1463409893}
+      objectReference: {fileID: 1244077861}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[2]
       value: 
-      objectReference: {fileID: 950696950}
+      objectReference: {fileID: 1182317592}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[3]
       value: 
-      objectReference: {fileID: 1883733012}
+      objectReference: {fileID: 1789238774}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[4]
       value: 
-      objectReference: {fileID: 1710002895}
+      objectReference: {fileID: 1254293303}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[5]
       value: 
-      objectReference: {fileID: 1058671834}
+      objectReference: {fileID: 823638170}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[6]
       value: 
-      objectReference: {fileID: 1413713110}
+      objectReference: {fileID: 1600021991}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[7]
       value: 
-      objectReference: {fileID: 1297812666}
+      objectReference: {fileID: 878871733}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[8]
       value: 
-      objectReference: {fileID: 1271016899}
+      objectReference: {fileID: 1423306592}
     - target: {fileID: 7850210692756651962, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: m_Name
@@ -3148,7 +5135,7 @@ Transform:
   m_Children:
   - {fileID: 1035784688}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2095756353
 MonoBehaviour:
@@ -3176,7 +5163,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2c31182529804034fb5461e4d6c12211,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c31182529804034fb5461e4d6c12211,
         type: 3}
@@ -3242,60 +5229,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 758046451308876417, guid: 0ef662b51602891469b05773ee779742,
+    - target: {fileID: 3145680905340382238, guid: 0ef662b51602891469b05773ee779742,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 758046451308876417, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 758046451308876417, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 758046451308876417, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 758046451308876417, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 758046451308876417, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
+      propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3482372549442632454, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: playerAnim
-      value: 
-      objectReference: {fileID: 1031988695}
-    - target: {fileID: 3482372549442632454, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: playerAnimator
-      value: 
-      objectReference: {fileID: 1031988695}
-    - target: {fileID: 3482372549442632454, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: raycastDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3482372549442632454, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: animationHandler
-      value: 
-      objectReference: {fileID: 1031988696}
-    - target: {fileID: 3482372549442632454, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: pointsLayer.m_Bits
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3482372549442632454, guid: 0ef662b51602891469b05773ee779742,
         type: 3}
@@ -3344,11 +5281,6 @@ PrefabInstance:
       objectReference: {fileID: 27768939}
     - target: {fileID: 4184478949014042776, guid: 0ef662b51602891469b05773ee779742,
         type: 3}
-      propertyPath: playerAnim
-      value: 
-      objectReference: {fileID: 1031988695}
-    - target: {fileID: 4184478949014042776, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
       propertyPath: targetPoints.Array.data[0]
       value: 
       objectReference: {fileID: 2095756352}
@@ -3360,7 +5292,7 @@ PrefabInstance:
     - target: {fileID: 4184478949014042779, guid: 0ef662b51602891469b05773ee779742,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4184478949014042779, guid: 0ef662b51602891469b05773ee779742,
         type: 3}
@@ -3411,11 +5343,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8612349183808613780, guid: 0ef662b51602891469b05773ee779742,
-        type: 3}
-      propertyPath: rotationX
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef662b51602891469b05773ee779742, type: 3}
