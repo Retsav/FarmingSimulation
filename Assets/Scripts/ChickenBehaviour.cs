@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class ChickenBehaviour : MonoBehaviour
 {
@@ -11,11 +12,44 @@ public class ChickenBehaviour : MonoBehaviour
     private Transform targetPoint;
     private Animator animator;
 
+    private Image healthBar;
+
+    private bool isOnDamageDelay;
+
+    [SerializeField] private float damageDelay = 1f;
+    
+    [SerializeField] private float chickenHealth = 3f;
+    [SerializeField] private float chickenHealthMax = 3f;
     [SerializeField] private List<GameObject> chickenPatrolPoints;
+
+    private void OnEnable()
+    {
+        FoxBehaviour.attack += GetDamage;
+    }
+
+    private void GetDamage(Transform chicken)
+    {
+        if (!chicken == transform) return;
+        if (!isOnDamageDelay)
+        {
+            chickenHealth--;
+            isOnDamageDelay = true;
+            StartCoroutine(EndDelay());
+        }
+    }
+
+    IEnumerator EndDelay()
+    {
+        yield return new WaitForSeconds(damageDelay);
+        if (isOnDamageDelay) 
+            isOnDamageDelay = false;
+    }
 
     private void Awake()
     {
+        chickenHealth = chickenHealthMax;
         navMeshAgent = GetComponent<NavMeshAgent>();
+        healthBar = transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Image>();
         animator = GetComponent<Animator>();
     }
 
@@ -31,6 +65,7 @@ public class ChickenBehaviour : MonoBehaviour
         {
             SetAsTargetDestination(GetRandomDestination());
         }
+        healthBar.fillAmount = GetHealthNormalized();
     }
 
     private void WalkAnimation()
@@ -43,6 +78,11 @@ public class ChickenBehaviour : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
+    }
+
+    private float GetHealthNormalized()
+    {
+        return chickenHealth / chickenHealthMax;
     }
 
     private void SetAsTargetDestination(GameObject destination)
