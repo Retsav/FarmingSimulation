@@ -9,10 +9,13 @@ using UnityEngine.AI;
 public class FoxBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject penLocation;
+    [SerializeField] private GameObject foxholeLocation;
+    
     [SerializeField] private List<GameObject> chickensInRange;
 
     private float chickenDistance;
-
+    [SerializeField] private bool hasChicken;
+    [SerializeField] private float foxCooldown = 10f;
     
     private NavMeshAgent foxNavMesh;
     private Transform closestTarget;
@@ -26,17 +29,66 @@ public class FoxBehaviour : MonoBehaviour
     {
         foxNavMesh = GetComponent<NavMeshAgent>();
     }
+
+    private void OnEnable()
+    {
+        foxNavMesh.destination = penLocation.transform.position;
+        ChickenBehaviour.death += RemoveDeadChickenFromList;
+        ChickenBehaviour.death += OnChickenKilled;
+    }
+
+    private void OnDisable()
+    {
+        ChickenBehaviour.death -= RemoveDeadChickenFromList;
+        ChickenBehaviour.death -= OnChickenKilled;
+    }
+
     private void Update()
     {
         ChooseTarget();
+        Debug.Log(foxNavMesh.remainingDistance);
+        FoxAttack();
+        if (hasChicken)
+        {
+            ReturnToFoxHole();
+        }
+    }
+
+    private void ReturnToFoxHole()
+    {
+        foxNavMesh.SetDestination(foxholeLocation.transform.position);
         if (foxNavMesh.remainingDistance < 0.1f)
         {
+            StartCoroutine(FoxCooldown());
+        }
+    }
+
+    private void FoxAttack()
+    {
+        if (foxNavMesh.remainingDistance <= 1f && !hasChicken)
+        {
+            Debug.Log("Atakuje");
             attack(closestTarget);
         }
     }
 
+    private void RemoveDeadChickenFromList(Transform chicken)
+    {
+        if (chickensInRange.Contains(chicken.GameObject()))
+        {
+            chickensInRange.Remove(chicken.GameObject());
+        }
+    }
+
+    private void OnChickenKilled(Transform chicken)
+    {
+        hasChicken = true;
+        transform.GetChild(1).GameObject().SetActive(true);
+    }
+
     public void ChooseTarget()
     {
+        if (hasChicken) return;
         closestTarget = null;
         float closestTargetDistance = float.MaxValue;
         NavMeshPath path = new NavMeshPath();
@@ -62,6 +114,13 @@ public class FoxBehaviour : MonoBehaviour
         {
             foxNavMesh.SetDestination(closestTarget.position);
         }
+    }
+
+    IEnumerator FoxCooldown()
+    {
+        yield return new WaitForSeconds(foxCooldown);
+        transform.GetChild(1).GameObject().SetActive(false);
+        hasChicken = false;
     }
     
     private void OnTriggerEnter(Collider other)
