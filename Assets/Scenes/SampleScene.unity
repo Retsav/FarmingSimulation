@@ -199,32 +199,18 @@ Transform:
   m_Father: {fileID: 1782060084}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 139.099, z: 0}
---- !u!1 &119409055 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4984608850777801829, guid: 54d2f11d9d8f0b64d811d054de285984,
+--- !u!114 &119409063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4984608850777801828, guid: 54d2f11d9d8f0b64d811d054de285984,
     type: 3}
   m_PrefabInstance: {fileID: 4984608851052332565}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &119409060
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119409055}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0f6abae96c2a05248b27caf6d3001932, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531dfa831aff74a41bd5c8138f37dc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &144432047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1066,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: foxBehaviour
+      value: 
+      objectReference: {fileID: 119409063}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[0]
@@ -2335,6 +2326,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: foxBehaviour
+      value: 
+      objectReference: {fileID: 119409063}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.data[0]
@@ -4882,6 +4878,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
+      propertyPath: foxBehaviour
+      value: 
+      objectReference: {fileID: 119409063}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
       propertyPath: chickenPatrolPoints.Array.size
       value: 9
       objectReference: {fileID: 0}
@@ -5238,11 +5239,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4984608850777801828, guid: 54d2f11d9d8f0b64d811d054de285984,
         type: 3}
-      propertyPath: foxCooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4984608850777801828, guid: 54d2f11d9d8f0b64d811d054de285984,
-        type: 3}
       propertyPath: penLocation
       value: 
       objectReference: {fileID: 1483562299}
@@ -5311,15 +5307,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4984608850777801831, guid: 54d2f11d9d8f0b64d811d054de285984,
+    - target: {fileID: 5134893196675032019, guid: 54d2f11d9d8f0b64d811d054de285984,
         type: 3}
-      propertyPath: m_Radius
-      value: 0.59
+      propertyPath: m_Pitch
+      value: 1.65
       objectReference: {fileID: 0}
-    - target: {fileID: 7338217815901047526, guid: 54d2f11d9d8f0b64d811d054de285984,
+    - target: {fileID: 5134893196675032019, guid: 54d2f11d9d8f0b64d811d054de285984,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.49
+      propertyPath: m_Volume
+      value: 0.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54d2f11d9d8f0b64d811d054de285984, type: 3}
@@ -5402,6 +5398,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
+        type: 3}
+      propertyPath: foxBehaviour
+      value: 
+      objectReference: {fileID: 119409063}
     - target: {fileID: 7850210692756651961, guid: 94b1dcdfb854b51429433333158ab1e6,
         type: 3}
       propertyPath: chickenPatrolPoints.Array.size
