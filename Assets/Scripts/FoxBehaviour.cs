@@ -83,7 +83,6 @@ public class FoxBehaviour : MonoBehaviour
             yield return new WaitUntil(() => !isHungry);
             yield return new WaitForSeconds(foxHungerRollInterval);
             var roll = MathF.Floor(UnityEngine.Random.Range(0f, 101f));
-            Debug.Log(roll);
             if (roll >= 50)
             {
                 isHungry = true;
@@ -104,7 +103,6 @@ public class FoxBehaviour : MonoBehaviour
     {
         if (foxNavMesh.remainingDistance <= 1f && !hasChicken && distFromHole > 5f)
         {
-            Debug.Log("Atakuje");
             attack(closestTarget);
         }
     }
@@ -163,7 +161,6 @@ public class FoxBehaviour : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Detected trigger");
         if (other.GameObject().layer != 6) return;
         if (chickensInRange.Contains(other.GameObject())) return;
         chickensInRange.Add(other.GameObject());
