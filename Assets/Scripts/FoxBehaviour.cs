@@ -13,12 +13,16 @@ public class FoxBehaviour : MonoBehaviour
     
     [SerializeField] private List<GameObject> chickensInRange;
 
+    [SerializeField] private float distFromHole;
     private float chickenDistance;
     [SerializeField] private bool hasChicken;
+    [SerializeField] private bool isHungry;
     [SerializeField] private float foxCooldown = 10f;
+    [SerializeField] private float foxHungerRollInterval = 5f;
     
     private NavMeshAgent foxNavMesh;
     private Transform closestTarget;
+    private Animator foxAnimator;
 
     public delegate void InformChicken(Transform chicken);
 
@@ -27,12 +31,13 @@ public class FoxBehaviour : MonoBehaviour
 
     private void Awake()
     {
+        foxAnimator = GetComponent<Animator>();
         foxNavMesh = GetComponent<NavMeshAgent>();
     }
 
     private void OnEnable()
     {
-        foxNavMesh.destination = penLocation.transform.position;
+        foxNavMesh.SetDestination(foxholeLocation.transform.position);
         ChickenBehaviour.death += RemoveDeadChickenFromList;
         ChickenBehaviour.death += OnChickenKilled;
     }
@@ -43,14 +48,46 @@ public class FoxBehaviour : MonoBehaviour
         ChickenBehaviour.death -= OnChickenKilled;
     }
 
+    private void Start()
+    {
+        StartCoroutine(FoxHungerRoll());
+    }
+
     private void Update()
     {
-        ChooseTarget();
-        Debug.Log(foxNavMesh.remainingDistance);
+        distFromHole = Vector3.Distance(foxholeLocation.transform.position, transform.position);
+        if (isHungry)
+        {
+            ChooseTarget();
+        }
         FoxAttack();
         if (hasChicken)
         {
             ReturnToFoxHole();
+        }
+
+        if (foxNavMesh.remainingDistance >= 1f)
+        {
+            foxAnimator.SetBool("isWalking", true);
+        }
+        else 
+        {
+            foxAnimator.SetBool("isWalking", false);
+        }
+    }
+
+    IEnumerator FoxHungerRoll()
+    {
+        while(true)
+        {
+            yield return new WaitUntil(() => !isHungry);
+            yield return new WaitForSeconds(foxHungerRollInterval);
+            var roll = MathF.Floor(UnityEngine.Random.Range(0f, 101f));
+            Debug.Log(roll);
+            if (roll >= 50)
+            {
+                isHungry = true;
+            }
         }
     }
 
@@ -65,7 +102,7 @@ public class FoxBehaviour : MonoBehaviour
 
     private void FoxAttack()
     {
-        if (foxNavMesh.remainingDistance <= 1f && !hasChicken)
+        if (foxNavMesh.remainingDistance <= 1f && !hasChicken && distFromHole > 5f)
         {
             Debug.Log("Atakuje");
             attack(closestTarget);
@@ -83,7 +120,7 @@ public class FoxBehaviour : MonoBehaviour
     private void OnChickenKilled(Transform chicken)
     {
         hasChicken = true;
-        transform.GetChild(1).GameObject().SetActive(true);
+        transform.GetChild(0).GetChild(0).GameObject().SetActive(true);
     }
 
     public void ChooseTarget()
@@ -119,8 +156,9 @@ public class FoxBehaviour : MonoBehaviour
     IEnumerator FoxCooldown()
     {
         yield return new WaitForSeconds(foxCooldown);
-        transform.GetChild(1).GameObject().SetActive(false);
+        transform.GetChild(0).GetChild(0).GameObject().SetActive(false);
         hasChicken = false;
+        isHungry = false;
     }
     
     private void OnTriggerEnter(Collider other)
