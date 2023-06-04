@@ -18,6 +18,7 @@ public class ChickenBehaviour : MonoBehaviour
     private bool isOnDamageDelay;
 
     [SerializeField] private float damageDelay = 1f;
+    [SerializeField] private float respawnDelay = 15f;
     
     [SerializeField] private float chickenHealth = 3f;
     [SerializeField] private float chickenHealthMax = 3f;
@@ -28,6 +29,9 @@ public class ChickenBehaviour : MonoBehaviour
     private void OnEnable()
     {
         FoxBehaviour.attack += GetDamage;
+        chickenHealth = chickenHealthMax;
+        isOnDamageDelay = false;
+        SetAsTargetDestination(GetRandomDestination());
     }
 
     private void OnDisable()
@@ -37,6 +41,7 @@ public class ChickenBehaviour : MonoBehaviour
 
     private void GetDamage(Transform chicken)
     {
+        if (chicken.CompareTag("Point")) return;
         if (chicken.GameObject().name != transform.GameObject().name) return;
         if (!isOnDamageDelay)
         {
@@ -55,17 +60,10 @@ public class ChickenBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        chickenHealth = chickenHealthMax;
         navMeshAgent = GetComponent<NavMeshAgent>();
         healthBar = transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Image>();
         animator = GetComponent<Animator>();
     }
-
-    private void Start()
-    {
-        SetAsTargetDestination(GetRandomDestination());
-    }
-
     private void Update()
     {
         WalkAnimation();
@@ -84,7 +82,7 @@ public class ChickenBehaviour : MonoBehaviour
     private void Die()
     {
         death?.Invoke(gameObject.transform);
-        Destroy(this.GameObject());
+        gameObject.SetActive(false);
     }
 
     private void WalkAnimation()
