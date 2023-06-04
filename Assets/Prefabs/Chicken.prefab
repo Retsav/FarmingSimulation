@@ -397,7 +397,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cda1b77beed4b643afa124ca1572be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageDelay: 1
+  respawnDelay: 15
   chickenHealth: 3
+  chickenHealthMax: 3
   chickenPatrolPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -408,6 +411,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  foxBehaviour: {fileID: 0}
 --- !u!65 &1606058737
 BoxCollider:
   m_ObjectHideFlags: 0
