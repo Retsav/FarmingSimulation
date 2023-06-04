@@ -23,6 +23,8 @@ public class FoxBehaviour : MonoBehaviour
     private NavMeshAgent foxNavMesh;
     private Transform closestTarget;
     private Animator foxAnimator;
+    private AudioSource foxAudio;
+    public bool audioPlaying;
 
     public delegate void InformChicken(Transform chicken);
 
@@ -33,6 +35,7 @@ public class FoxBehaviour : MonoBehaviour
     {
         foxAnimator = GetComponent<Animator>();
         foxNavMesh = GetComponent<NavMeshAgent>();
+        foxAudio = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -103,6 +106,11 @@ public class FoxBehaviour : MonoBehaviour
     {
         if (foxNavMesh.remainingDistance <= 1f && !hasChicken && distFromHole > 5f)
         {
+            if (!audioPlaying)
+            {
+                foxAudio.Play();
+                audioPlaying = true;
+            }
             attack(closestTarget);
         }
     }

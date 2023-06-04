@@ -23,6 +23,9 @@ public class ChickenBehaviour : MonoBehaviour
     [SerializeField] private float chickenHealth = 3f;
     [SerializeField] private float chickenHealthMax = 3f;
     [SerializeField] private List<GameObject> chickenPatrolPoints;
+
+
+    [SerializeField] private FoxBehaviour foxBehaviour;
     
     public delegate void ChickenSend(Transform chicken);
     public static ChickenSend death;
@@ -54,8 +57,11 @@ public class ChickenBehaviour : MonoBehaviour
     IEnumerator EndDelay()
     {
         yield return new WaitForSeconds(damageDelay);
-        if (isOnDamageDelay) 
+        if (isOnDamageDelay)
+        {
             isOnDamageDelay = false;
+            foxBehaviour.audioPlaying = false;   
+        }
     }
 
     private void Awake()
